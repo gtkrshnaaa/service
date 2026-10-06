@@ -230,12 +230,14 @@
   top: 0;
   right: 0;
   bottom: 0;
-  width: 80%;
+  width: 85%;
   max-width: 320px;
   background-color: var(--surface-card);
   z-index: 201;
   transform: translateX(100%);
-  transition: transform var(--transition-normal);
+  visibility: hidden;
+  pointer-events: none;
+  transition: transform var(--transition-normal), visibility var(--transition-normal);
   padding: 24px;
   display: flex;
   flex-direction: column;
@@ -246,6 +248,13 @@
 
 .mobile-drawer.open {
   transform: translateX(0);
+  visibility: visible;
+  pointer-events: auto;
+}
+
+.mobile-toggle svg,
+#mobile-drawer-close svg {
+  pointer-events: none;
 }
 
 .drawer-header {

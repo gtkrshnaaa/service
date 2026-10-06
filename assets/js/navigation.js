@@ -11,21 +11,48 @@ export function initNavigation() {
     drawer.classList.add('open');
     if (backdrop) backdrop.classList.add('active');
     document.body.style.overflow = 'hidden';
+    toggleBtn.setAttribute('aria-expanded', 'true');
   }
 
   function closeDrawer() {
     drawer.classList.remove('open');
     if (backdrop) backdrop.classList.remove('active');
     document.body.style.overflow = '';
+    toggleBtn.setAttribute('aria-expanded', 'false');
   }
 
-  toggleBtn.addEventListener('click', openDrawer);
-  if (closeBtn) closeBtn.addEventListener('click', closeDrawer);
-  if (backdrop) backdrop.addEventListener('click', closeDrawer);
+  function toggleDrawer(e) {
+    if (e) e.preventDefault();
+    if (drawer.classList.contains('open')) {
+      closeDrawer();
+    } else {
+      openDrawer();
+    }
+  }
+
+  toggleBtn.addEventListener('click', toggleDrawer);
+  if (closeBtn) {
+    closeBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      closeDrawer();
+    });
+  }
+  if (backdrop) {
+    backdrop.addEventListener('click', (e) => {
+      e.preventDefault();
+      closeDrawer();
+    });
+  }
 
   drawerLinks.forEach((link) => {
     link.addEventListener('click', () => {
       closeDrawer();
     });
+  });
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && drawer.classList.contains('open')) {
+      closeDrawer();
+    }
   });
 }
