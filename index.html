@@ -1,0 +1,846 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gilang Teja Krishna | Software Engineering Services</title>
+  <meta name="description" content="Production-grade software engineering services by Gilang Teja Krishna. Modern web applications, cross-platform mobile apps (Flutter, React Native), and robust Laravel fullstack backends.">
+
+  <!-- Typography: Fraunces & DM Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400..700;1,9..40,400..700&family=Fraunces:ital,opsz,wght@0,9..144,400..700;1,9..144,400..700&display=swap" rel="stylesheet">
+
+  <!-- Core Stylesheets -->
+  <link rel="stylesheet" href="assets/css/tokens.css">
+  <link rel="stylesheet" href="assets/css/components.css">
+  <link rel="stylesheet" href="assets/css/layout.css">
+  <link rel="stylesheet" href="assets/css/sections.css">
+</head>
+<body>
+
+  <!-- Site Navigation Header -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="#" class="brand-logo" aria-label="Gilang Teja Krishna Homepage">
+        <div class="brand-icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="16 18 22 12 16 6"></polyline>
+            <polyline points="8 6 2 12 8 18"></polyline>
+          </svg>
+        </div>
+        <div>
+          <div class="brand-title">Gilang Teja Krishna</div>
+          <div class="brand-subtitle">Software Engineering</div>
+        </div>
+      </a>
+
+      <nav class="nav-desktop">
+        <a href="#services" class="nav-link">Services</a>
+        <a href="#tech-stack" class="nav-link">Tech Stack</a>
+        <a href="#process" class="nav-link">Engineering Process</a>
+        <a href="#pricing" class="nav-link">Estimator</a>
+        <a href="#faq" class="nav-link">FAQ</a>
+      </nav>
+
+      <div style="display: flex; align-items: center; gap: 10px;">
+        <a href="https://wa.me/6281234567890?text=Hello%20Gilang%20Teja%20Krishna%2C%20I%20would%20like%20to%20consult%20about%20a%20software%20project." target="_blank" rel="noopener noreferrer" class="btn btn-whatsapp" style="padding: 9px 16px; font-size: 0.875rem;">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path>
+          </svg>
+          <span>WhatsApp</span>
+        </a>
+
+        <button class="btn btn-primary" data-open-modal style="padding: 9px 16px; font-size: 0.875rem;">
+          Consultation
+        </button>
+
+        <button id="mobile-menu-toggle" class="mobile-toggle" aria-label="Toggle Navigation">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="3" y1="12" x2="21" y2="12"></line>
+            <line x1="3" y1="6" x2="21" y2="6"></line>
+            <line x1="3" y1="18" x2="21" y2="18"></line>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Drawer Menu -->
+  <div id="mobile-drawer-backdrop" class="mobile-drawer-backdrop"></div>
+  <aside id="mobile-drawer" class="mobile-drawer" aria-label="Mobile Navigation Drawer">
+    <div class="drawer-header">
+      <div class="brand-title">Gilang Teja Krishna</div>
+      <button id="mobile-drawer-close" class="btn btn-secondary" style="padding: 6px; border-radius: var(--radius-sm);" aria-label="Close Drawer">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="18" y1="6" x2="6" y2="18"></line>
+          <line x1="6" y1="6" x2="18" y2="18"></line>
+        </svg>
+      </button>
+    </div>
+    <nav class="drawer-nav">
+      <a href="#services" class="drawer-link">Services</a>
+      <a href="#tech-stack" class="drawer-link">Tech Stack</a>
+      <a href="#process" class="drawer-link">Engineering Process</a>
+      <a href="#pricing" class="drawer-link">Cost Estimator</a>
+      <a href="#faq" class="drawer-link">FAQ</a>
+    </nav>
+    <div style="margin-top: auto; display: flex; flex-direction: column; gap: 10px;">
+      <a href="https://wa.me/6281234567890?text=Hello%20Gilang%2C%20I%20would%20like%20to%20consult%20about%20a%20software%20project." target="_blank" rel="noopener noreferrer" class="btn btn-whatsapp" style="width: 100%;">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path>
+        </svg>
+        Order via WhatsApp
+      </a>
+      <button class="btn btn-primary" data-open-modal style="width: 100%;">
+        Request Consultation
+      </button>
+    </div>
+  </aside>
+
+  <!-- Hero Section -->
+  <section class="section" style="padding-top: 48px; padding-bottom: 72px;">
+    <div class="container">
+      <div class="hero-grid">
+        <div class="hero-content">
+          <div style="display: flex; align-items: center; gap: 10px; flex-wrap: wrap;">
+            <span class="pill-badge">
+              <span class="dot"></span>
+              Verified Senior Software Engineer
+            </span>
+            <span class="chip">Open for New Engagements</span>
+          </div>
+
+          <h1 class="hero-title">
+            Production-Grade Software Engineering from Concept to Scale.
+          </h1>
+
+          <p class="hero-subtitle">
+            Bespoke web applications, cross-platform mobile apps, and robust Laravel fullstack backends engineered for speed, reliability, and long-term maintainability.
+          </p>
+
+          <div class="hero-actions">
+            <a href="https://wa.me/6281234567890?text=Hello%20Gilang%20Teja%20Krishna%2C%20I%20would%20like%20to%20book%20a%20software%20engineering%20consultation." target="_blank" rel="noopener noreferrer" class="btn btn-whatsapp">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path>
+              </svg>
+              <span>Order via WhatsApp</span>
+            </a>
+
+            <button class="btn btn-primary" data-open-modal>
+              Book Technical Consultation
+            </button>
+
+            <a href="#pricing" class="btn btn-secondary">
+              Calculate Cost
+            </a>
+          </div>
+
+          <div class="hero-stats">
+            <div class="stat-item">
+              <div class="stat-value">99.9%</div>
+              <div class="stat-label">Availability Standard</div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-value">&lt; 100ms</div>
+              <div class="stat-label">P95 API Latency Target</div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-value">100%</div>
+              <div class="stat-label">Type-Safe Deliverables</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="hero-visual-card">
+          <div class="hero-image-wrapper">
+            <img src="assets/images/hero-software-architecture.jpg" alt="Architectural 2D sketch of multi-platform software systems, web applications, and cloud architecture" loading="eager" width="700" height="438">
+          </div>
+          <div style="padding: 16px 8px 4px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 8px;">
+            <div style="font-size: 0.8125rem; font-weight: 600; color: var(--text-primary);">
+              Architectural Systems Blueprint
+            </div>
+            <span class="chip" style="font-size: 0.75rem;">Web / Mobile / Cloud</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Services Catalog Section -->
+  <section id="services" class="section section-alt">
+    <div class="container">
+      <div class="section-header text-center">
+        <span class="eyebrow">Engineering Solutions</span>
+        <h2 class="section-title">Specialized Software Development Services</h2>
+        <p class="section-description">
+          Each solution is authored from ground up with clean architecture, strict modularity, comprehensive automated tests, and zero unnecessary dependencies.
+        </p>
+      </div>
+
+      <div class="grid-3">
+        <!-- Service 1: Web Engineering -->
+        <article class="card-editorial service-card">
+          <div class="service-card-visual">
+            <img src="assets/images/service-web-engineering.jpg" alt="2D technical sketch of modern web engineering and component architectures" loading="lazy" width="600" height="375">
+          </div>
+          <div class="service-card-body">
+            <h3 class="service-title">Web Application Engineering</h3>
+            <p class="service-desc">
+              High-performance web apps with modern JavaScript and TypeScript frameworks. Fast load times, responsive fluid layouts, and seamless state management.
+            </p>
+            <ul class="service-features">
+              <li class="service-feature-item">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="20 6 9 17 4 12"></polyline>
+                </svg>
+                <span>React, Next.js, and modern Vue architectures</span>
+              </li>
+              <li class="service-feature-item">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="20 6 9 17 4 12"></polyline>
+                </svg>
+                <span>Sub-second page rendering and Core Web Vitals optimization</span>
+              </li>
+              <li class="service-feature-item">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="20 6 9 17 4 12"></polyline>
+                </svg>
+                <span>Type-safe API integration with automated schema validation</span>
+              </li>
+            </ul>
+            <div class="service-tech-tags">
+              <span class="chip">JavaScript</span>
+              <span class="chip">TypeScript</span>
+              <span class="chip">React</span>
+              <span class="chip">Next.js</span>
+              <span class="chip">Tailwind CSS</span>
+            </div>
+            <div style="display: flex; gap: 8px; margin-top: 12px;">
+              <button class="btn btn-primary" data-open-modal data-service-preselect="Web Application" style="flex: 1; padding: 10px;">
+                Inquire Service
+              </button>
+              <a href="https://wa.me/6281234567890?text=Hello%20Gilang%2C%20I%20am%20interested%20in%20Web%20Application%20Engineering%20services." target="_blank" rel="noopener noreferrer" class="btn btn-whatsapp" style="padding: 10px;" aria-label="WhatsApp Web Inquiry">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path>
+                </svg>
+              </a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Service 2: Mobile Apps -->
+        <article class="card-editorial service-card">
+          <div class="service-card-visual">
+            <img src="assets/images/service-mobile-apps.jpg" alt="2D technical sketch of iOS and Android mobile app engineering with Flutter and React Native" loading="lazy" width="600" height="375">
+          </div>
+          <div class="service-card-body">
+            <h3 class="service-title">Mobile Application Development</h3>
+            <p class="service-desc">
+              Cross-platform mobile applications for iOS and Android using Flutter and React Native. Smooth 60/120 FPS performance, offline capabilities, and native hardware access.
+            </p>
+            <ul class="service-features">
+              <li class="service-feature-item">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="20 6 9 17 4 12"></polyline>
+                </svg>
+                <span>Flutter and React Native multi-platform codebases</span>
+              </li>
+              <li class="service-feature-item">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="20 6 9 17 4 12"></polyline>
+                </svg>
+                <span>Offline-first database sync (SQLite, Hive, WatermelonDB)</span>
+              </li>
+              <li class="service-feature-item">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="20 6 9 17 4 12"></polyline>
+                </svg>
+                <span>Ready for App Store and Google Play publishing pipeline</span>
+              </li>
+            </ul>
+            <div class="service-tech-tags">
+              <span class="chip">Flutter</span>
+              <span class="chip">Dart</span>
+              <span class="chip">React Native</span>
+              <span class="chip">iOS</span>
+              <span class="chip">Android</span>
+            </div>
+            <div style="display: flex; gap: 8px; margin-top: 12px;">
+              <button class="btn btn-primary" data-open-modal data-service-preselect="Mobile App" style="flex: 1; padding: 10px;">
+                Inquire Service
+              </button>
+              <a href="https://wa.me/6281234567890?text=Hello%20Gilang%2C%20I%20am%20interested%20in%20Mobile%20Application%20Development%20services." target="_blank" rel="noopener noreferrer" class="btn btn-whatsapp" style="padding: 10px;" aria-label="WhatsApp Mobile Inquiry">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path>
+                </svg>
+              </a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Service 3: Laravel Fullstack -->
+        <article class="card-editorial service-card">
+          <div class="service-card-visual">
+            <img src="assets/images/service-backend-laravel.jpg" alt="2D technical sketch of Laravel fullstack backends, databases, and server APIs" loading="lazy" width="600" height="375">
+          </div>
+          <div class="service-card-body">
+            <h3 class="service-title">Fullstack Laravel &amp; Backend Systems</h3>
+            <p class="service-desc">
+              Resilient enterprise web platforms and API backends built on Laravel. Engineered for high concurrency, relational integrity, and rock-solid business logic.
+            </p>
+            <ul class="service-features">
+              <li class="service-feature-item">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="20 6 9 17 4 12"></polyline>
+                </svg>
+                <span>Laravel 11+ streamlined architecture with PHP 8.3+</span>
+              </li>
+              <li class="service-feature-item">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="20 6 9 17 4 12"></polyline>
+                </svg>
+                <span>PostgreSQL and MySQL schema tuning with Redis caching</span>
+              </li>
+              <li class="service-feature-item">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="20 6 9 17 4 12"></polyline>
+                </svg>
+                <span>Secure RBAC auth, background queue workers, and webhook flows</span>
+              </li>
+            </ul>
+            <div class="service-tech-tags">
+              <span class="chip">Laravel</span>
+              <span class="chip">PHP 8+</span>
+              <span class="chip">PostgreSQL</span>
+              <span class="chip">Redis</span>
+              <span class="chip">REST APIs</span>
+            </div>
+            <div style="display: flex; gap: 8px; margin-top: 12px;">
+              <button class="btn btn-primary" data-open-modal data-service-preselect="Laravel Fullstack" style="flex: 1; padding: 10px;">
+                Inquire Service
+              </button>
+              <a href="https://wa.me/6281234567890?text=Hello%20Gilang%2C%20I%20am%20interested%20in%20Laravel%20Fullstack%20and%20Backend%20services." target="_blank" rel="noopener noreferrer" class="btn btn-whatsapp" style="padding: 10px;" aria-label="WhatsApp Laravel Inquiry">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path>
+                </svg>
+              </a>
+            </div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- Technology Stack Matrix -->
+  <section id="tech-stack" class="section">
+    <div class="container">
+      <div class="section-header">
+        <span class="eyebrow">Technology Foundation</span>
+        <h2 class="section-title">Tested, Battle-Hardened Tech Stacks</h2>
+        <p class="section-description">
+          Modern software engineering requires choosing the right tool for the job. No speculative frameworks or unmaintained packages.
+        </p>
+      </div>
+
+      <div class="grid-3">
+        <!-- Stack Card 1: Frontend & Web -->
+        <div class="card-editorial" style="padding: 24px;">
+          <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 16px;">
+            <div style="width: 40px; height: 40px; border-radius: var(--radius-sm); background-color: var(--hero-wash); color: var(--accent-sage-dark); display: flex; align-items: center; justify-content: center;">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
+                <line x1="8" y1="21" x2="16" y2="21"></line>
+                <line x1="12" y1="17" x2="12" y2="21"></line>
+              </svg>
+            </div>
+            <div>
+              <h3 style="font-family: var(--font-display); font-size: 1.25rem; font-weight: 600;">Web Ecosystem</h3>
+              <div style="font-size: 0.8125rem; color: var(--text-muted);">Frontend &amp; Responsive Web</div>
+            </div>
+          </div>
+          <p style="font-size: 0.875rem; color: var(--text-secondary); margin-bottom: 16px; line-height: 1.6;">
+            Building fluid, accessible, and reactive web applications tailored for speed and high conversion rates.
+          </p>
+          <div style="display: flex; flex-wrap: wrap; gap: 6px;">
+            <span class="chip">JavaScript (ESNext)</span>
+            <span class="chip">TypeScript</span>
+            <span class="chip">React 19</span>
+            <span class="chip">Next.js</span>
+            <span class="chip">Tailwind CSS</span>
+            <span class="chip">REST &amp; GraphQL</span>
+          </div>
+        </div>
+
+        <!-- Stack Card 2: Mobile Ecosystem -->
+        <div class="card-editorial" style="padding: 24px;">
+          <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 16px;">
+            <div style="width: 40px; height: 40px; border-radius: var(--radius-sm); background-color: var(--hero-wash); color: var(--accent-sage-dark); display: flex; align-items: center; justify-content: center;">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="5" y="2" width="14" height="20" rx="2" ry="2"></rect>
+                <line x1="12" y1="18" x2="12.01" y2="18"></line>
+              </svg>
+            </div>
+            <div>
+              <h3 style="font-family: var(--font-display); font-size: 1.25rem; font-weight: 600;">Mobile Ecosystem</h3>
+              <div style="font-size: 0.8125rem; color: var(--text-muted);">iOS &amp; Android Cross-Platform</div>
+            </div>
+          </div>
+          <p style="font-size: 0.875rem; color: var(--text-secondary); margin-bottom: 16px; line-height: 1.6;">
+            Native-grade mobile applications with single codebase efficiency, compiled machine performance, and hardware integrations.
+          </p>
+          <div style="display: flex; flex-wrap: wrap; gap: 6px;">
+            <span class="chip">Flutter</span>
+            <span class="chip">Dart</span>
+            <span class="chip">React Native</span>
+            <span class="chip">Expo</span>
+            <span class="chip">SQLite</span>
+            <span class="chip">Push Notifications</span>
+          </div>
+        </div>
+
+        <!-- Stack Card 3: Backend & Database -->
+        <div class="card-editorial" style="padding: 24px;">
+          <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 16px;">
+            <div style="width: 40px; height: 40px; border-radius: var(--radius-sm); background-color: var(--hero-wash); color: var(--accent-sage-dark); display: flex; align-items: center; justify-content: center;">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <ellipse cx="12" cy="5" rx="9" ry="3"></ellipse>
+                <path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"></path>
+                <path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"></path>
+              </svg>
+            </div>
+            <div>
+              <h3 style="font-family: var(--font-display); font-size: 1.25rem; font-weight: 600;">Backend &amp; Cloud</h3>
+              <div style="font-size: 0.8125rem; color: var(--text-muted);">Robust APIs &amp; Datastores</div>
+            </div>
+          </div>
+          <p style="font-size: 0.875rem; color: var(--text-secondary); margin-bottom: 16px; line-height: 1.6;">
+            Scalable backend architectures built with Laravel and Node.js. Resilient database schemas with ACID compliance.
+          </p>
+          <div style="display: flex; flex-wrap: wrap; gap: 6px;">
+            <span class="chip">Laravel 11</span>
+            <span class="chip">PHP 8.3+</span>
+            <span class="chip">Node.js</span>
+            <span class="chip">PostgreSQL</span>
+            <span class="chip">MySQL</span>
+            <span class="chip">Redis</span>
+            <span class="chip">Docker</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Engineering Process Roadmap -->
+  <section id="process" class="section section-alt">
+    <div class="container">
+      <div class="section-header text-center">
+        <span class="eyebrow">Delivery Standard</span>
+        <h2 class="section-title">The Engineering Execution Cycle</h2>
+        <p class="section-description">
+          Every project follows a disciplined engineering pipeline with transparent milestones, versioned code commits, and zero guesswork.
+        </p>
+      </div>
+
+      <div class="grid-4">
+        <div class="workflow-card">
+          <div class="workflow-step-num">01</div>
+          <h3 style="font-size: 1.125rem; font-weight: 600;">Architecture &amp; Spec</h3>
+          <p style="font-size: 0.875rem; color: var(--text-secondary); line-height: 1.6;">
+            Deep technical discovery, API contract design, relational schema modeling, and sprint roadmap planning.
+          </p>
+        </div>
+
+        <div class="workflow-card">
+          <div class="workflow-step-num">02</div>
+          <h3 style="font-size: 1.125rem; font-weight: 600;">Precision Sprints</h3>
+          <p style="font-size: 0.875rem; color: var(--text-secondary); line-height: 1.6;">
+            Modular implementation following single responsibility principles, clean code standards, and type safety.
+          </p>
+        </div>
+
+        <div class="workflow-card">
+          <div class="workflow-step-num">03</div>
+          <h3 style="font-size: 1.125rem; font-weight: 600;">Rigorous Testing</h3>
+          <p style="font-size: 0.875rem; color: var(--text-secondary); line-height: 1.6;">
+            End-to-end integration tests, regression checks, security audits, and latency profiling under realistic conditions.
+          </p>
+        </div>
+
+        <div class="workflow-card">
+          <div class="workflow-step-num">04</div>
+          <h3 style="font-size: 1.125rem; font-weight: 600;">Deployment &amp; Handover</h3>
+          <p style="font-size: 0.875rem; color: var(--text-secondary); line-height: 1.6;">
+            Automated CI/CD release, zero-downtime migration, comprehensive documentation, and complete repository transfer.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Interactive Project Cost & Timeline Estimator -->
+  <section id="pricing" class="section">
+    <div class="container">
+      <div class="section-header text-center">
+        <span class="eyebrow">Instant Calculation</span>
+        <h2 class="section-title">Interactive Project Cost Estimator</h2>
+        <p class="section-description">
+          Transparent engineering estimates based on platform scope and architectural features. Adjust options to preview realistic budget and delivery timeline.
+        </p>
+      </div>
+
+      <div class="estimator-container">
+        <div style="margin-bottom: 24px;">
+          <label style="display: block; font-weight: 600; font-size: 0.9375rem; margin-bottom: 12px; color: var(--text-primary);">
+            1. Select Primary Platform
+          </label>
+          <div class="estimator-options">
+            <button type="button" class="option-radio-btn active" data-platform="web">
+              <span style="font-weight: 600; font-size: 0.9375rem; color: var(--text-primary);">Web App</span>
+              <span style="font-size: 0.75rem; color: var(--text-muted);">React / Next / Vue</span>
+            </button>
+            <button type="button" class="option-radio-btn" data-platform="mobile">
+              <span style="font-weight: 600; font-size: 0.9375rem; color: var(--text-primary);">Mobile App</span>
+              <span style="font-size: 0.75rem; color: var(--text-muted);">Flutter / React Native</span>
+            </button>
+            <button type="button" class="option-radio-btn" data-platform="laravel">
+              <span style="font-weight: 600; font-size: 0.9375rem; color: var(--text-primary);">Laravel Fullstack</span>
+              <span style="font-size: 0.75rem; color: var(--text-muted);">Enterprise PHP &amp; DB</span>
+            </button>
+            <button type="button" class="option-radio-btn" data-platform="custom">
+              <span style="font-weight: 600; font-size: 0.9375rem; color: var(--text-primary);">Multi-Platform</span>
+              <span style="font-size: 0.75rem; color: var(--text-muted);">Web + Mobile + Cloud</span>
+            </button>
+          </div>
+        </div>
+
+        <div style="margin-bottom: 24px;">
+          <label for="project-scope" style="display: block; font-weight: 600; font-size: 0.9375rem; margin-bottom: 8px; color: var(--text-primary);">
+            2. Project Tier &amp; Complexity
+          </label>
+          <div class="form-select-wrapper">
+            <select id="project-scope" class="form-select">
+              <option value="starter">Starter MVP (Core user journeys, responsive UI, essential backend)</option>
+              <option value="production" selected>Production Business (Full features, auth RBAC, payment/API integrations)</option>
+              <option value="enterprise">Enterprise Scaled (High-concurrency tuning, microservices, advanced caching)</option>
+            </select>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="6 9 12 15 18 9"></polyline>
+            </svg>
+          </div>
+        </div>
+
+        <div>
+          <label style="display: block; font-weight: 600; font-size: 0.9375rem; margin-bottom: 12px; color: var(--text-primary);">
+            3. Optional Architectural Add-ons
+          </label>
+          <div class="estimator-addons">
+            <label class="addon-card">
+              <div style="display: flex; align-items: center; gap: 12px;">
+                <input type="checkbox" class="themed-checkbox addon-checkbox" data-cost="2500000" data-name="Database Tuning &amp; Redis Cache">
+                <div>
+                  <div style="font-size: 0.875rem; font-weight: 600;">High-Performance Caching &amp; DB Tuning</div>
+                  <div style="font-size: 0.75rem; color: var(--text-muted);">Redis queue workers and PostgreSQL query indexing</div>
+                </div>
+              </div>
+              <span class="chip" style="font-size: 0.75rem;">+2.5M</span>
+            </label>
+
+            <label class="addon-card">
+              <div style="display: flex; align-items: center; gap: 12px;">
+                <input type="checkbox" class="themed-checkbox addon-checkbox" data-cost="3000000" data-name="Real-time WebSockets &amp; Live Sync">
+                <div>
+                  <div style="font-size: 0.875rem; font-weight: 600;">Real-Time WebSockets Engine</div>
+                  <div style="font-size: 0.75rem; color: var(--text-muted);">Bidirectional live updates, chat, or push notifications</div>
+                </div>
+              </div>
+              <span class="chip" style="font-size: 0.75rem;">+3.0M</span>
+            </label>
+
+            <label class="addon-card">
+              <div style="display: flex; align-items: center; gap: 12px;">
+                <input type="checkbox" class="themed-checkbox addon-checkbox" data-cost="2000000" data-name="Payment Gateway &amp; Automated Invoicing">
+                <div>
+                  <div style="font-size: 0.875rem; font-weight: 600;">Payment Gateway &amp; Billing Webhooks</div>
+                  <div style="font-size: 0.75rem; color: var(--text-muted);">Midtrans / Xendit / Stripe integration with invoice generation</div>
+                </div>
+              </div>
+              <span class="chip" style="font-size: 0.75rem;">+2.0M</span>
+            </label>
+
+            <label class="addon-card">
+              <div style="display: flex; align-items: center; gap: 12px;">
+                <input type="checkbox" class="themed-checkbox addon-checkbox" data-cost="2500000" data-name="Automated CI/CD &amp; Docker Orchestration">
+                <div>
+                  <div style="font-size: 0.875rem; font-weight: 600;">Docker &amp; CI/CD Pipeline Automation</div>
+                  <div style="font-size: 0.75rem; color: var(--text-muted);">Single-enter deployment bundles with zero downtime</div>
+                </div>
+              </div>
+              <span class="chip" style="font-size: 0.75rem;">+2.5M</span>
+            </label>
+          </div>
+        </div>
+
+        <div class="estimator-summary">
+          <div>
+            <div style="font-size: 0.8125rem; text-transform: uppercase; letter-spacing: 0.1em; color: rgba(255, 255, 255, 0.7);">
+              Estimated Investment
+            </div>
+            <div id="price-estimate-val" class="estimator-price-val">
+              Rp 13.600.000
+            </div>
+            <div style="font-size: 0.8125rem; color: rgba(255, 255, 255, 0.7); margin-top: 4px;">
+              Delivery Estimate: <strong id="duration-estimate-val" style="color: #ffffff;">3 - 4 weeks</strong>
+            </div>
+          </div>
+
+          <div style="display: flex; gap: 12px; flex-wrap: wrap;">
+            <a id="wa-estimator-trigger" href="https://wa.me/6281234567890" target="_blank" rel="noopener noreferrer" class="btn btn-whatsapp" style="padding: 14px 24px;">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path>
+              </svg>
+              <span>Book this Scope on WhatsApp</span>
+            </a>
+
+            <button class="btn btn-secondary" data-open-modal style="background: transparent; border-color: rgba(255, 255, 255, 0.3); color: #ffffff;">
+              Inquire via Form
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ Section -->
+  <section id="faq" class="section section-alt">
+    <div class="container">
+      <div class="section-header text-center">
+        <span class="eyebrow">Common Questions</span>
+        <h2 class="section-title">Frequently Asked Questions</h2>
+        <p class="section-description">
+          Everything you need to know about technical workflow, code ownership, and communication standards.
+        </p>
+      </div>
+
+      <div class="faq-list">
+        <div class="faq-item open">
+          <button class="faq-question">
+            <span>What tech stacks do you specialize in?</span>
+            <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="6 9 12 15 18 9"></polyline>
+            </svg>
+          </button>
+          <div class="faq-answer">
+            I specialize primarily in modern JavaScript / TypeScript ecosystems (React, Next.js, Node.js), mobile development with Flutter and React Native for iOS and Android, and fullstack PHP backends using Laravel 11 with PostgreSQL, MySQL, and Redis.
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question">
+            <span>Who owns the source code and repositories?</span>
+            <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="6 9 12 15 18 9"></polyline>
+            </svg>
+          </button>
+          <div class="faq-answer">
+            You own 100% of all intellectual property, source code, deployment scripts, and architectural assets upon final delivery. All commits are authored directly in your Git repository with granular commit histories.
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question">
+            <span>How do we communicate throughout the project lifecycle?</span>
+            <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="6 9 12 15 18 9"></polyline>
+            </svg>
+          </button>
+          <div class="faq-answer">
+            Communication is maintained primarily through WhatsApp or scheduled technical video reviews, paired with asynchronous sprint updates via GitHub issues and pull requests.
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question">
+            <span>Do you provide warranty and post-launch maintenance?</span>
+            <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="6 9 12 15 18 9"></polyline>
+            </svg>
+          </button>
+          <div class="faq-answer">
+            Yes, every deployment includes a 30-day post-launch warranty covering bug fixes and technical stability adjustments. Extended monthly SLA maintenance retainers are also available.
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Banner Section -->
+  <section id="contact" class="section">
+    <div class="container">
+      <div style="background-color: var(--surface-dark); color: #ffffff; border-radius: var(--radius-xl); padding: 56px 40px; text-align: center; position: relative; overflow: hidden; border: 1px solid rgba(0, 0, 0, 0.1);">
+        <span class="eyebrow" style="color: #cad2c5;">Direct Consultation</span>
+        <h2 style="font-family: var(--font-display); font-size: 2.5rem; font-weight: 500; margin: 12px 0 16px; color: #ffffff;">
+          Ready to Build High-Performance Software?
+        </h2>
+        <p style="font-size: 1.0625rem; color: rgba(255, 255, 255, 0.8); max-width: 600px; margin: 0 auto 32px; line-height: 1.65;">
+          Discuss your application requirements, database schema design, and launch milestones directly with Gilang Teja Krishna.
+        </p>
+
+        <div style="display: flex; justify-content: center; gap: 14px; flex-wrap: wrap;">
+          <a href="https://wa.me/6281234567890?text=Hello%20Gilang%20Teja%20Krishna%2C%20I%20would%20like%20to%20order%20software%20engineering%20services." target="_blank" rel="noopener noreferrer" class="btn btn-whatsapp" style="padding: 14px 28px; font-size: 1rem;">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path>
+            </svg>
+            <span>Message on WhatsApp</span>
+          </a>
+
+          <button class="btn btn-secondary" data-open-modal style="background: transparent; border-color: rgba(255, 255, 255, 0.3); color: #ffffff; padding: 14px 28px; font-size: 1rem;">
+            Submit Project Brief
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Site Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-top">
+        <div style="max-width: 380px;">
+          <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 12px;">
+            <div class="brand-icon">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="16 18 22 12 16 6"></polyline>
+                <polyline points="8 6 2 12 8 18"></polyline>
+              </svg>
+            </div>
+            <span class="brand-title">Gilang Teja Krishna</span>
+          </div>
+          <p style="font-size: 0.875rem; color: var(--text-secondary); line-height: 1.6;">
+            Senior Software Engineer &amp; Solutions Architect delivering production-grade web systems, mobile applications, and Laravel fullstack backends.
+          </p>
+        </div>
+
+        <div>
+          <div style="font-size: 0.8125rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--text-primary); margin-bottom: 14px;">
+            Services
+          </div>
+          <ul style="list-style: none; display: flex; flex-direction: column; gap: 8px; font-size: 0.875rem; color: var(--text-secondary);">
+            <li><a href="#services" class="nav-link">Web Application Engineering</a></li>
+            <li><a href="#services" class="nav-link">Mobile Apps (Flutter &amp; React Native)</a></li>
+            <li><a href="#services" class="nav-link">Fullstack Laravel &amp; APIs</a></li>
+            <li><a href="#services" class="nav-link">Custom Architecture</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <div style="font-size: 0.8125rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--text-primary); margin-bottom: 14px;">
+            Direct Contact
+          </div>
+          <ul style="list-style: none; display: flex; flex-direction: column; gap: 8px; font-size: 0.875rem; color: var(--text-secondary);">
+            <li>
+              <a href="https://wa.me/6281234567890" target="_blank" rel="noopener noreferrer" class="nav-link" style="display: flex; align-items: center; gap: 6px;">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path>
+                </svg>
+                WhatsApp: +62 812 3456 7890
+              </a>
+            </li>
+            <li>
+              <a href="https://service.gtkrshnaaa.my.id" class="nav-link">
+                service.gtkrshnaaa.my.id
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div>
+          &copy; 2026 Gilang Teja Krishna. All rights reserved.
+        </div>
+        <div style="display: flex; gap: 16px;">
+          <span>Engineered with HTML5, CSS3 &amp; Vanilla JS</span>
+          <span>Warm Editorial Light System</span>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Floating Quick WhatsApp Trigger -->
+  <a href="https://wa.me/6281234567890?text=Hello%20Gilang%2C%20I%20would%20like%20to%20consult%20about%20a%20software%20project." target="_blank" rel="noopener noreferrer" class="floating-whatsapp" aria-label="Direct WhatsApp Consultation">
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path>
+    </svg>
+    <span>Chat on WhatsApp</span>
+  </a>
+
+  <!-- Technical Consultation Modal -->
+  <div id="consultation-modal" class="modal-backdrop" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+    <div class="modal-dialog">
+      <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 20px;">
+        <div>
+          <span class="eyebrow">Project Consultation</span>
+          <h2 id="modal-title" style="font-family: var(--font-display); font-size: 1.5rem; font-weight: 600; color: var(--text-primary); margin-top: 4px;">
+            Book Technical Discussion
+          </h2>
+        </div>
+        <button data-close-modal class="btn btn-secondary" style="padding: 6px; border-radius: var(--radius-sm);" aria-label="Close Modal">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="18" y1="6" x2="6" y2="18"></line>
+            <line x1="6" y1="6" x2="18" y2="18"></line>
+          </svg>
+        </button>
+      </div>
+
+      <form id="consultation-form">
+        <div style="margin-bottom: 16px;">
+          <label for="client-name" style="display: block; font-size: 0.875rem; font-weight: 600; margin-bottom: 6px;">
+            Your Name / Company
+          </label>
+          <input type="text" id="client-name" class="form-input" placeholder="e.g. Alex Pratama / Startup Studio" required>
+        </div>
+
+        <div style="margin-bottom: 16px;">
+          <label for="modal-service-select" style="display: block; font-size: 0.875rem; font-weight: 600; margin-bottom: 6px;">
+            Service Needed
+          </label>
+          <div class="form-select-wrapper">
+            <select id="modal-service-select" class="form-select">
+              <option value="Web Application">Web Application Engineering (React / Next.js)</option>
+              <option value="Mobile App">Mobile Application (Flutter / React Native)</option>
+              <option value="Laravel Fullstack">Fullstack Laravel &amp; Backend Systems</option>
+              <option value="Custom Software Architecture">Custom Multi-Platform Architecture</option>
+            </select>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="6 9 12 15 18 9"></polyline>
+            </svg>
+          </div>
+        </div>
+
+        <div style="margin-bottom: 24px;">
+          <label for="client-notes" style="display: block; font-size: 0.875rem; font-weight: 600; margin-bottom: 6px;">
+            Project Overview &amp; Requirements
+          </label>
+          <textarea id="client-notes" class="form-input" rows="4" placeholder="Describe the goal of your software, target timeline, or existing repository tech stack..." style="resize: vertical;"></textarea>
+        </div>
+
+        <div style="display: flex; gap: 10px;">
+          <button type="submit" class="btn btn-whatsapp" style="flex: 1; padding: 12px;">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path>
+            </svg>
+            Send Inquiry to WhatsApp
+          </button>
+          <button type="button" data-close-modal class="btn btn-secondary" style="padding: 12px 18px;">
+            Cancel
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- JavaScript modules -->
+  <script type="module" src="assets/js/main.js"></script>
+</body>
+</html>
