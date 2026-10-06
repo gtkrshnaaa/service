@@ -86,6 +86,22 @@
   color: var(--text-primary);
 }
 
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.header-wa-btn {
+  padding: 9px 16px;
+  font-size: 0.875rem;
+}
+
+.header-consult-btn {
+  padding: 9px 16px;
+  font-size: 0.875rem;
+}
+
 /* Section styling */
 .section {
   padding: 80px 0;
@@ -169,7 +185,24 @@
     display: none;
   }
   .mobile-toggle {
-    display: block;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .header-consult-btn {
+    display: none;
+  }
+  .header-wa-btn {
+    padding: 8px 12px;
+  }
+  .header-wa-btn .header-wa-label {
+    display: none;
+  }
+  .brand-title {
+    font-size: 1.0625rem;
+  }
+  .brand-subtitle {
+    font-size: 0.6875rem;
   }
   .grid-2, .grid-3, .grid-4 {
     grid-template-columns: 1fr;

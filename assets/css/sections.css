@@ -408,7 +408,25 @@
 
 @media (max-width: 768px) {
   .hero-title {
-    font-size: 2.25rem;
+    font-size: 2.125rem;
+  }
+  .hero-actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .hero-actions .btn {
+    width: 100%;
+  }
+  .hero-stats {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+  }
+  .stat-item .stat-value {
+    font-size: 1.35rem;
+  }
+  .stat-item .stat-label {
+    font-size: 0.6875rem;
+    line-height: 1.25;
   }
   .estimator-container {
     padding: 20px;
