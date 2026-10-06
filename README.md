@@ -23,7 +23,7 @@ Live Domain: [https://service.gtkrshnaaa.my.id](https://service.gtkrshnaaa.my.id
   - Custom Enterprise Software Architecture (`assets/images/service-custom-software.svg`)
 - **Interactive Capabilities:**
   - Dynamic Project Cost & Timeline Estimator with real-time tier calculation
-  - One-click WhatsApp consultation dispatch (`+62 812 3456 7890`) with encoded project brief
+  - One-click WhatsApp consultation dispatch (`0851-5077-1763` / `+62 851 5077 1763`) with encoded project brief
   - Accessible technical consultation booking modal
   - Mobile drawer navigation with smooth responsive transitions
   - Accordion FAQ system

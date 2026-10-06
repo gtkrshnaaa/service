@@ -68,8 +68,8 @@ export function initModal() {
         'Looking forward to your technical response and schedule.'
       ].join('\n');
 
-      const dummyPhone = '6281234567890';
-      const waUrl = 'https://wa.me/' + dummyPhone + '?text=' + encodeURIComponent(msg);
+      const waPhone = '6285150771763';
+      const waUrl = 'https://wa.me/' + waPhone + '?text=' + encodeURIComponent(msg);
       window.open(waUrl, '_blank', 'noopener,noreferrer');
       close();
       form.reset();

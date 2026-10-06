@@ -146,7 +146,7 @@
         'Could we schedule a consultation to discuss technical specifications and timeline?'
       ].filter(Boolean).join('\n');
 
-      const dummyPhone = '6281234567890';
+      const dummyPhone = '6285150771763';
       waEstimatorBtn.href = 'https://wa.me/' + dummyPhone + '?text=' + encodeURIComponent(msg);
     }
 
@@ -223,7 +223,7 @@
           'Looking forward to your technical response and schedule.'
         ].join('\n');
 
-        const dummyPhone = '6281234567890';
+        const dummyPhone = '6285150771763';
         const waUrl = 'https://wa.me/' + dummyPhone + '?text=' + encodeURIComponent(msg);
         window.open(waUrl, '_blank', 'noopener,noreferrer');
         close();

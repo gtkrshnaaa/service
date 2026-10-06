@@ -76,8 +76,8 @@ export function initEstimator() {
       'Could we schedule a consultation to discuss technical specifications and timeline?'
     ].filter(Boolean).join('\n');
 
-    const dummyPhone = '6281234567890';
-    waEstimatorBtn.href = 'https://wa.me/' + dummyPhone + '?text=' + encodeURIComponent(msg);
+    const waPhone = '6285150771763';
+    waEstimatorBtn.href = 'https://wa.me/' + waPhone + '?text=' + encodeURIComponent(msg);
   }
 
   // Initial calculation

@@ -51,8 +51,8 @@ test('HTML Verification: Identity and Requirements', () => {
   assert.ok(html.includes('JavaScript'), 'Must mention JavaScript');
   assert.ok(html.includes('React Native'), 'Must mention React Native');
 
-  // Verify WhatsApp Dummy Number
-  assert.ok(html.includes('6281234567890'), 'Must include dummy WhatsApp phone number');
+  // Verify Official WhatsApp Contact Number
+  assert.ok(html.includes('6285150771763'), 'Must include WhatsApp phone number 6285150771763');
 
   // Verify Mobile Viewport
   assert.ok(html.includes('name="viewport"'), 'Must have responsive viewport tag');
