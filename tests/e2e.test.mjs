@@ -19,6 +19,7 @@ test('Project Structure: Essential Files Exist', () => {
     'assets/js/modal.js',
     'assets/js/navigation.js',
     'assets/js/faq.js',
+    'assets/js/select.js',
     'assets/images/hero-software-architecture.jpg',
     'assets/images/service-web-engineering.jpg',
     'assets/images/service-mobile-apps.jpg',
@@ -76,7 +77,8 @@ test('Quality Gate: Zero Emojis and Zero Em Dashes', () => {
     'assets/js/estimator.js',
     'assets/js/modal.js',
     'assets/js/navigation.js',
-    'assets/js/faq.js'
+    'assets/js/faq.js',
+    'assets/js/select.js'
   ];
 
   // Em dash check: \u2014

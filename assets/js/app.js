@@ -69,6 +69,127 @@
     });
   }
 
+  function initCustomSelects() {
+    const containers = document.querySelectorAll('.custom-select-container');
+
+    containers.forEach(function (container) {
+      const trigger = container.querySelector('.custom-select-trigger');
+      const label = container.querySelector('.custom-select-label');
+      const dropdown = container.querySelector('.custom-select-dropdown');
+      const options = container.querySelectorAll('.custom-select-option');
+      const nativeSelect = container.querySelector('select');
+
+      if (!trigger || !dropdown) return;
+
+      function openDropdown() {
+        containers.forEach(function (other) {
+          if (other !== container) {
+            other.classList.remove('open');
+            const otherTrigger = other.querySelector('.custom-select-trigger');
+            if (otherTrigger) otherTrigger.setAttribute('aria-expanded', 'false');
+          }
+        });
+        container.classList.add('open');
+        trigger.setAttribute('aria-expanded', 'true');
+      }
+
+      function closeDropdown() {
+        container.classList.remove('open');
+        trigger.setAttribute('aria-expanded', 'false');
+      }
+
+      function toggleDropdown(e) {
+        if (e) {
+          e.preventDefault();
+          e.stopPropagation();
+        }
+        if (container.classList.contains('open')) {
+          closeDropdown();
+        } else {
+          openDropdown();
+        }
+      }
+
+      trigger.addEventListener('click', toggleDropdown);
+
+      options.forEach(function (opt) {
+        opt.addEventListener('click', function (e) {
+          e.preventDefault();
+          e.stopPropagation();
+          const val = opt.getAttribute('data-value');
+          const title = opt.querySelector('.custom-select-option-title')?.textContent || opt.textContent.trim();
+
+          options.forEach(function (o) {
+            o.classList.remove('selected');
+            o.removeAttribute('aria-selected');
+          });
+          opt.classList.add('selected');
+          opt.setAttribute('aria-selected', 'true');
+
+          if (label) {
+            label.textContent = opt.getAttribute('data-display') || title;
+          }
+
+          if (nativeSelect) {
+            nativeSelect.value = val;
+            nativeSelect.dispatchEvent(new Event('change', { bubbles: true }));
+          }
+
+          closeDropdown();
+          trigger.focus();
+        });
+      });
+
+      trigger.addEventListener('keydown', function (e) {
+        if (e.key === 'ArrowDown' || e.key === 'ArrowUp' || e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          openDropdown();
+          const selected = container.querySelector('.custom-select-option.selected') || options[0];
+          if (selected) selected.focus();
+        }
+      });
+
+      dropdown.addEventListener('keydown', function (e) {
+        const current = document.activeElement;
+        if (e.key === 'Escape') {
+          closeDropdown();
+          trigger.focus();
+        } else if (e.key === 'ArrowDown') {
+          e.preventDefault();
+          const next = current.nextElementSibling;
+          if (next && next.classList.contains('custom-select-option')) next.focus();
+        } else if (e.key === 'ArrowUp') {
+          e.preventDefault();
+          const prev = current.previousElementSibling;
+          if (prev && prev.classList.contains('custom-select-option')) prev.focus();
+        } else if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          current.click();
+        }
+      });
+    });
+
+    document.addEventListener('click', function (e) {
+      if (!e.target.closest('.custom-select-container')) {
+        containers.forEach(function (container) {
+          container.classList.remove('open');
+          const trigger = container.querySelector('.custom-select-trigger');
+          if (trigger) trigger.setAttribute('aria-expanded', 'false');
+        });
+      }
+    });
+
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape') {
+        containers.forEach(function (container) {
+          container.classList.remove('open');
+          const trigger = container.querySelector('.custom-select-trigger');
+          if (trigger) trigger.setAttribute('aria-expanded', 'false');
+        });
+      }
+    });
+  }
+
   function initEstimator() {
     const platformButtons = document.querySelectorAll('.option-radio-btn[data-platform]');
     const scopeSelect = document.getElementById('project-scope');
@@ -146,8 +267,8 @@
         'Could we schedule a consultation to discuss technical specifications and timeline?'
       ].filter(Boolean).join('\n');
 
-      const dummyPhone = '6285150771763';
-      waEstimatorBtn.href = 'https://wa.me/' + dummyPhone + '?text=' + encodeURIComponent(msg);
+      const waPhone = '6285150771763';
+      waEstimatorBtn.href = 'https://wa.me/' + waPhone + '?text=' + encodeURIComponent(msg);
     }
 
     recalculate();
@@ -179,7 +300,24 @@
         const serviceTarget = btn.getAttribute('data-service-preselect');
         if (serviceTarget) {
           const selectEl = document.getElementById('modal-service-select');
-          if (selectEl) selectEl.value = serviceTarget;
+          if (selectEl) {
+            selectEl.value = serviceTarget;
+            const container = document.getElementById('modal-service-container');
+            if (container) {
+              const options = container.querySelectorAll('.custom-select-option');
+              const targetOpt = container.querySelector('.custom-select-option[data-value="' + serviceTarget + '"]');
+              if (targetOpt) {
+                options.forEach(function (o) {
+                  o.classList.remove('selected');
+                  o.removeAttribute('aria-selected');
+                });
+                targetOpt.classList.add('selected');
+                targetOpt.setAttribute('aria-selected', 'true');
+                const label = container.querySelector('.custom-select-label');
+                if (label) label.textContent = targetOpt.getAttribute('data-display') || targetOpt.textContent.trim();
+              }
+            }
+          }
         }
         open();
       });
@@ -223,8 +361,8 @@
           'Looking forward to your technical response and schedule.'
         ].join('\n');
 
-        const dummyPhone = '6285150771763';
-        const waUrl = 'https://wa.me/' + dummyPhone + '?text=' + encodeURIComponent(msg);
+        const waPhone = '6285150771763';
+        const waUrl = 'https://wa.me/' + waPhone + '?text=' + encodeURIComponent(msg);
         window.open(waUrl, '_blank', 'noopener,noreferrer');
         close();
         form.reset();
@@ -255,6 +393,7 @@
 
   function bootstrap() {
     initNavigation();
+    initCustomSelects();
     initEstimator();
     initModal();
     initFaq();

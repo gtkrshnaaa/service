@@ -24,7 +24,24 @@ export function initModal() {
       const serviceTarget = btn.getAttribute('data-service-preselect');
       if (serviceTarget) {
         const selectEl = document.getElementById('modal-service-select');
-        if (selectEl) selectEl.value = serviceTarget;
+        if (selectEl) {
+          selectEl.value = serviceTarget;
+          const container = document.getElementById('modal-service-container');
+          if (container) {
+            const options = container.querySelectorAll('.custom-select-option');
+            const targetOpt = container.querySelector('.custom-select-option[data-value="' + serviceTarget + '"]');
+            if (targetOpt) {
+              options.forEach(o => {
+                o.classList.remove('selected');
+                o.removeAttribute('aria-selected');
+              });
+              targetOpt.classList.add('selected');
+              targetOpt.setAttribute('aria-selected', 'true');
+              const label = container.querySelector('.custom-select-label');
+              if (label) label.textContent = targetOpt.getAttribute('data-display') || targetOpt.textContent.trim();
+            }
+          }
+        }
       }
       open();
     });

@@ -565,18 +565,60 @@
         </div>
 
         <div style="margin-bottom: 24px;">
-          <label for="project-scope" style="display: block; font-weight: 600; font-size: 0.9375rem; margin-bottom: 8px; color: var(--text-primary);">
+          <label id="project-scope-label" style="display: block; font-weight: 600; font-size: 0.9375rem; margin-bottom: 8px; color: var(--text-primary);">
             2. Project Tier &amp; Complexity
           </label>
-          <div class="form-select-wrapper">
-            <select id="project-scope" class="form-select">
+          <div class="custom-select-container" id="project-scope-container">
+            <select id="project-scope" class="sr-only" tabindex="-1" aria-hidden="true">
               <option value="starter">Starter MVP (Core user journeys, responsive UI, essential backend)</option>
               <option value="production" selected>Production Business (Full features, auth RBAC, payment/API integrations)</option>
               <option value="enterprise">Enterprise Scaled (High-concurrency tuning, microservices, advanced caching)</option>
             </select>
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <polyline points="6 9 12 15 18 9"></polyline>
-            </svg>
+
+            <button type="button" class="custom-select-trigger" aria-haspopup="listbox" aria-expanded="false" aria-labelledby="project-scope-label">
+              <span class="custom-select-label">Production Business (Full features, auth RBAC, payment/API integrations)</span>
+              <svg class="custom-select-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="6 9 12 15 18 9"></polyline>
+              </svg>
+            </button>
+
+            <div class="custom-select-dropdown" role="listbox" aria-labelledby="project-scope-label">
+              <div class="custom-select-option" role="option" data-value="starter" data-display="Starter MVP (Core user journeys, responsive UI, essential backend)" tabindex="0">
+                <div class="custom-select-option-content">
+                  <span class="custom-select-option-title">Starter MVP</span>
+                  <span class="custom-select-option-subtitle">Core user journeys, responsive UI, essential backend</span>
+                </div>
+                <span class="custom-select-option-check">
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="20 6 9 17 4 12"></polyline>
+                  </svg>
+                </span>
+              </div>
+
+              <div class="custom-select-option selected" role="option" data-value="production" data-display="Production Business (Full features, auth RBAC, payment/API integrations)" aria-selected="true" tabindex="0">
+                <div class="custom-select-option-content">
+                  <span class="custom-select-option-title">Production Business</span>
+                  <span class="custom-select-option-subtitle">Full features, auth RBAC, payment/API integrations</span>
+                </div>
+                <span class="custom-select-option-check">
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="20 6 9 17 4 12"></polyline>
+                  </svg>
+                </span>
+              </div>
+
+              <div class="custom-select-option" role="option" data-value="enterprise" data-display="Enterprise Scaled (High-concurrency tuning, microservices, advanced caching)" tabindex="0">
+                <div class="custom-select-option-content">
+                  <span class="custom-select-option-title">Enterprise Scaled</span>
+                  <span class="custom-select-option-subtitle">High-concurrency tuning, microservices, advanced caching</span>
+                </div>
+                <span class="custom-select-option-check">
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="20 6 9 17 4 12"></polyline>
+                  </svg>
+                </span>
+              </div>
+            </div>
           </div>
         </div>
 
@@ -852,19 +894,58 @@
         </div>
 
         <div style="margin-bottom: 16px;">
-          <label for="modal-service-select" style="display: block; font-size: 0.875rem; font-weight: 600; margin-bottom: 6px;">
+          <label id="modal-service-label" style="display: block; font-size: 0.875rem; font-weight: 600; margin-bottom: 6px;">
             Service Needed
           </label>
-          <div class="form-select-wrapper">
-            <select id="modal-service-select" class="form-select">
-              <option value="Web Application">Web Application Engineering (React / Next.js)</option>
+          <div class="custom-select-container" id="modal-service-container">
+            <select id="modal-service-select" class="sr-only" tabindex="-1" aria-hidden="true">
+              <option value="Web Application" selected>Web Application Engineering (React / Next.js)</option>
               <option value="Mobile App">Mobile Application (Flutter / React Native)</option>
               <option value="Laravel Fullstack">Fullstack Laravel &amp; Backend Systems</option>
               <option value="Custom Software Architecture">Custom Multi-Platform Architecture</option>
             </select>
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <polyline points="6 9 12 15 18 9"></polyline>
-            </svg>
+
+            <button type="button" class="custom-select-trigger" aria-haspopup="listbox" aria-expanded="false" aria-labelledby="modal-service-label">
+              <span class="custom-select-label">Web Application Engineering (React / Next.js)</span>
+              <svg class="custom-select-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="6 9 12 15 18 9"></polyline>
+              </svg>
+            </button>
+
+            <div class="custom-select-dropdown" role="listbox" aria-labelledby="modal-service-label">
+              <div class="custom-select-option selected" role="option" data-value="Web Application" data-display="Web Application Engineering (React / Next.js)" aria-selected="true" tabindex="0">
+                <span class="custom-select-option-title">Web Application Engineering</span>
+                <span class="custom-select-option-check">
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="20 6 9 17 4 12"></polyline>
+                  </svg>
+                </span>
+              </div>
+              <div class="custom-select-option" role="option" data-value="Mobile App" data-display="Mobile Application (Flutter / React Native)" tabindex="0">
+                <span class="custom-select-option-title">Mobile Application (Flutter / React Native)</span>
+                <span class="custom-select-option-check">
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="20 6 9 17 4 12"></polyline>
+                  </svg>
+                </span>
+              </div>
+              <div class="custom-select-option" role="option" data-value="Laravel Fullstack" data-display="Fullstack Laravel &amp; Backend Systems" tabindex="0">
+                <span class="custom-select-option-title">Fullstack Laravel &amp; Backend Systems</span>
+                <span class="custom-select-option-check">
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="20 6 9 17 4 12"></polyline>
+                  </svg>
+                </span>
+              </div>
+              <div class="custom-select-option" role="option" data-value="Custom Software Architecture" data-display="Custom Multi-Platform Architecture" tabindex="0">
+                <span class="custom-select-option-title">Custom Multi-Platform Architecture</span>
+                <span class="custom-select-option-check">
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="20 6 9 17 4 12"></polyline>
+                  </svg>
+                </span>
+              </div>
+            </div>
           </div>
         </div>
 
