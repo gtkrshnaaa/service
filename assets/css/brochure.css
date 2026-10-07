@@ -1,0 +1,442 @@
+/* Brochure Stylesheet: Gilang Teja Krishna Services */
+/* Warm Editorial Light Design System & Print Layout */
+
+.brochure-body {
+  background-color: var(--canvas-bg);
+  color: var(--text-primary);
+  min-height: 100vh;
+}
+
+/* Screen Action Toolbar */
+.brochure-toolbar {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background-color: rgba(251, 251, 250, 0.92);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border-hairline);
+  padding: 12px 0;
+}
+
+.brochure-toolbar-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.toolbar-left, .toolbar-right {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* Document Container */
+.brochure-wrapper {
+  max-width: 860px;
+  margin: 32px auto 64px auto;
+  padding: 0 24px;
+}
+
+.brochure-sheet {
+  background-color: var(--surface-card);
+  border: 1px solid var(--border-hairline);
+  border-radius: var(--radius-xl);
+  padding: 48px;
+  box-shadow: var(--shadow-subtle);
+}
+
+/* Header & Meta Lockup */
+.brochure-header {
+  border-bottom: 1px solid var(--border-hairline);
+  padding-bottom: 32px;
+  margin-bottom: 36px;
+}
+
+.brochure-header-top {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 20px;
+  margin-bottom: 24px;
+}
+
+.brochure-title {
+  font-family: var(--font-display);
+  font-size: 2.25rem;
+  font-weight: 500;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  color: var(--text-primary);
+  margin-top: 10px;
+}
+
+.brochure-subtitle {
+  font-size: 1rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+  margin-top: 8px;
+}
+
+.brochure-meta-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+  background-color: var(--surface-alt);
+  border: 1px solid var(--border-hairline-subtle);
+  border-radius: var(--radius-md);
+  padding: 16px;
+}
+
+.brochure-meta-item .meta-label {
+  font-size: 0.6875rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--text-muted);
+  font-weight: 700;
+  margin-bottom: 4px;
+}
+
+.brochure-meta-item .meta-value {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Section Architecture */
+.brochure-section {
+  margin-bottom: 40px;
+}
+
+.brochure-section:last-child {
+  margin-bottom: 0;
+}
+
+.brochure-section-header {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  border-bottom: 1px solid var(--border-hairline);
+  padding-bottom: 8px;
+  margin-bottom: 20px;
+}
+
+.brochure-section-title {
+  font-family: var(--font-display);
+  font-size: 1.35rem;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.brochure-section-tag {
+  font-size: 0.6875rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--text-muted);
+  font-weight: 700;
+}
+
+/* Content Grids */
+.services-deck-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+}
+
+.deck-card {
+  background-color: var(--canvas-bg);
+  border: 1px solid var(--border-hairline);
+  border-radius: var(--radius-md);
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.deck-card-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.deck-card-icon {
+  width: 32px;
+  height: 32px;
+  border-radius: var(--radius-xs);
+  background-color: var(--chip-bg);
+  color: var(--accent-sage-dark);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.deck-card-title {
+  font-family: var(--font-display);
+  font-size: 1.0625rem;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.deck-card-desc {
+  font-size: 0.84375rem;
+  line-height: 1.55;
+  color: var(--text-secondary);
+}
+
+.deck-card-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: auto;
+  padding-top: 6px;
+}
+
+.deck-tag {
+  display: inline-block;
+  padding: 2px 8px;
+  border-radius: var(--radius-xs);
+  background-color: #ffffff;
+  border: 1px solid var(--border-hairline);
+  font-size: 0.6875rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+}
+
+/* Capabilities Matrix */
+.matrix-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+
+.matrix-card {
+  background-color: var(--surface-alt);
+  border: 1px solid var(--border-hairline-subtle);
+  border-radius: var(--radius-md);
+  padding: 16px;
+}
+
+.matrix-title {
+  font-size: 0.8125rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--text-muted);
+  margin-bottom: 10px;
+}
+
+.matrix-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.matrix-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.8125rem;
+  color: var(--text-primary);
+  font-weight: 500;
+}
+
+.matrix-item svg {
+  color: var(--accent-sage);
+  flex-shrink: 0;
+}
+
+/* Process & Engagements */
+.process-deck-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+}
+
+.process-deck-step {
+  background-color: var(--canvas-bg);
+  border: 1px solid var(--border-hairline);
+  border-radius: var(--radius-md);
+  padding: 14px;
+}
+
+.step-badge {
+  font-size: 0.6875rem;
+  font-weight: 700;
+  color: var(--accent-sage-dark);
+  margin-bottom: 4px;
+}
+
+.step-name {
+  font-weight: 600;
+  font-size: 0.875rem;
+  margin-bottom: 6px;
+  color: var(--text-primary);
+}
+
+.step-desc {
+  font-size: 0.75rem;
+  color: var(--text-secondary);
+  line-height: 1.45;
+}
+
+/* Tier Models */
+.tiers-deck-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
+}
+
+.tier-deck-card {
+  border: 1px solid var(--border-hairline);
+  border-radius: var(--radius-md);
+  padding: 16px;
+  background-color: var(--surface-card);
+}
+
+.tier-deck-card.highlight {
+  border-color: var(--accent-sage);
+  background-color: var(--badge-verified-bg);
+}
+
+.tier-deck-title {
+  font-family: var(--font-display);
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 4px;
+}
+
+.tier-deck-scope {
+  font-size: 0.75rem;
+  color: var(--text-secondary);
+  margin-bottom: 8px;
+}
+
+.tier-deck-price {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+/* Footer Stamp */
+.brochure-footer {
+  border-top: 1px solid var(--border-hairline);
+  padding-top: 24px;
+  margin-top: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.brochure-footer-text {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  line-height: 1.5;
+}
+
+/* Print Styles */
+@media print {
+  @page {
+    size: A4 portrait;
+    margin: 12mm 14mm 12mm 14mm;
+  }
+
+  body, .brochure-body {
+    background-color: #ffffff !important;
+    color: #1a1a1a !important;
+    font-size: 9.5pt;
+  }
+
+  .brochure-toolbar,
+  .screen-only {
+    display: none !important;
+  }
+
+  .brochure-wrapper {
+    max-width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  .brochure-sheet {
+    border: none !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+    padding: 0 !important;
+    background: transparent !important;
+  }
+
+  .brochure-header {
+    margin-bottom: 18px !important;
+    padding-bottom: 16px !important;
+  }
+
+  .brochure-title {
+    font-size: 1.75rem !important;
+  }
+
+  .brochure-meta-grid {
+    padding: 10px !important;
+    gap: 8px !important;
+    background-color: #f7f7f6 !important;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  .brochure-section {
+    margin-bottom: 20px !important;
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+
+  .deck-card, .matrix-card, .process-deck-step, .tier-deck-card {
+    border-color: #dcdcd8 !important;
+    background-color: #fafaf9 !important;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+
+  .deck-tag {
+    border-color: #dcdcd8 !important;
+    background-color: #ffffff !important;
+  }
+
+  .brochure-footer {
+    margin-top: 20px !important;
+    padding-top: 14px !important;
+    break-inside: avoid;
+  }
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+  .brochure-sheet {
+    padding: 24px 16px;
+  }
+  .brochure-header-top {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .brochure-meta-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .services-deck-grid,
+  .matrix-grid,
+  .process-deck-grid,
+  .tiers-deck-grid {
+    grid-template-columns: 1fr;
+  }
+  .brochure-footer {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
