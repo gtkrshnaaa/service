@@ -22,6 +22,7 @@ Live Domain: [https://service.gtkrshnaaa.my.id](https://service.gtkrshnaaa.my.id
   - Fullstack Laravel & Backend Systems (`assets/images/service-backend-laravel.jpg`)
   - Custom Enterprise Software Architecture (`assets/images/service-custom-software.svg`)
 - **Interactive Capabilities:**
+  - Standalone Capabilities Brochure (`brochure.html`) with one-click print-to-PDF export
   - Dynamic Project Cost & Timeline Estimator with real-time tier calculation
   - One-click WhatsApp consultation dispatch (`0851-5077-1763` / `+62 851 5077 1763`) with encoded project brief
   - Accessible technical consultation booking modal
@@ -59,18 +60,23 @@ Live Domain: [https://service.gtkrshnaaa.my.id](https://service.gtkrshnaaa.my.id
 ├── redeploy.sh                     # Single-enter branch pull and deployment pipeline
 ├── test.sh                         # Single-enter automated test runner
 ├── index.html                      # Semantic HTML5 landing page
+├── brochure.html                   # Standalone capabilities brochure & PDF export
 ├── assets/
 │   ├── css/
 │   │   ├── tokens.css              # Design tokens, variables, and typography reset
 │   │   ├── components.css          # Reusable buttons, badges, chips, and cards
 │   │   ├── layout.css              # Grid, headers, responsive breakpoints, drawer
-│   │   └── sections.css            # Section layouts, estimator, modal, FAQ
+│   │   ├── sections.css            # Section layouts, estimator, modal, FAQ
+│   │   └── brochure.css            # Editorial brochure layout and print styles
 │   ├── js/
 │   │   ├── main.js                 # Orchestrator entry point
 │   │   ├── estimator.js            # Interactive pricing & scope calculation
 │   │   ├── modal.js                # Consultation modal controller
 │   │   ├── navigation.js           # Mobile drawer and navigation handlers
-│   │   └── faq.js                  # Accordion toggle controller
+│   │   ├── faq.js                  # Accordion toggle controller
+│   │   ├── select.js               # Custom accessible select dropdown
+│   │   ├── brochure.js             # Print-to-PDF dispatch and export controller
+│   │   └── app.js                  # Standalone zero-dependency bundle
 │   └── images/                     # 2D architectural sketch illustrations in sage palette
 ├── docs/preview/screenshots/       # Visual preview screenshots
 └── tests/
