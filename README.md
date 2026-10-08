@@ -50,11 +50,11 @@ The service catalog is strictly divided into two distinct engagement tracks:
   - Web Katalog Bisnis: Rp 2.500.000 (Multi-page catalog, admin CRUD, inquiry form / WhatsApp)
   - Fullstack Laravel UMKM: Rp 3.800.000 - Rp 5.000.000 (Dynamic relational database, auth, admin panel)
 
-### 2. Skala Bisnis (Enterprise & Growth Platform)
-- **Scope Limit:** Multi-platform web systems, cross-platform mobile apps (Flutter & React Native), scalable backend APIs, and custom enterprise infrastructure.
-- **Budget Range:** Starting from Rp 8.500.000 up to custom enterprise scale.
-- **Delivery Timeline:** 2 to 8 weeks depending on architectural complexity.
-- **Capabilities:** High-concurrency Laravel 11 backends, Redis caching, queue workers, offline-first SQLite synchronization, CI/CD pipelines, and SLA maintenance retainers.
+### 2. Skala Bisnis (Operational Platforms & Systems)
+- **Scope Limit:** Custom web applications, Android mobile applications, integrated backend systems, and operational workflow automation.
+- **Budget Range:** Starting from Rp 8.500.000 up to customized business scale.
+- **Delivery Timeline:** 2 to 6 weeks depending on operational requirements.
+- **Capabilities:** Operational dashboards, Android mobile apps (APK / Google Play ready), payment gateway integration, automated data synchronization, and maintenance retainers.
 
 ---
 
@@ -65,9 +65,9 @@ The service catalog is strictly divided into two distinct engagement tracks:
    - React 19, Next.js, Vue 3
    - Tailwind CSS, HTML5, CSS3 Custom Properties
 2. **Mobile Ecosystem:**
-   - Flutter & Dart (Cross-platform iOS and Android)
-   - React Native & Expo
-   - SQLite, Hive, offline-first data sync
+   - Flutter & Android SDK (Dedicated Android Mobile Applications)
+   - React Native & Dart
+   - SQLite, local data sync, push notifications
 3. **Backend & Cloud:**
    - Laravel 11+, PHP 8.3+
    - Node.js, Express
