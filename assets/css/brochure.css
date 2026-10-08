@@ -421,8 +421,37 @@
   }
 }
 
+/* Guarantees Grid */
+.guarantees-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 14px;
+}
+
 /* Mobile Responsiveness */
 @media (max-width: 768px) {
+  .brochure-toolbar-inner {
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+  .toolbar-left,
+  .toolbar-right {
+    width: 100%;
+    justify-content: space-between;
+  }
+  .toolbar-right {
+    gap: 8px;
+  }
+  .toolbar-right .btn {
+    flex: 1;
+    justify-content: center;
+    padding: 8px 10px;
+    font-size: 0.8125rem;
+  }
+  .brochure-wrapper {
+    padding: 0 12px;
+    margin: 20px auto 40px auto;
+  }
   .brochure-sheet {
     padding: 24px 16px;
   }
@@ -437,11 +466,22 @@
   .matrix-grid,
   .process-deck-grid,
   .tiers-deck-grid,
-  .tiers-deck-grid.tiers-4 {
+  .tiers-deck-grid.tiers-4,
+  .guarantees-grid {
     grid-template-columns: 1fr;
   }
   .brochure-footer {
     flex-direction: column;
     align-items: flex-start;
+    gap: 12px;
+  }
+  .brochure-footer div:last-child {
+    text-align: left !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .brochure-meta-grid {
+    grid-template-columns: 1fr;
   }
 }

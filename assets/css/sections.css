@@ -448,6 +448,49 @@
   transform: translateY(0);
 }
 
+/* Scope Tiers Banner */
+.scope-tiers-banner {
+  background-color: var(--surface-card);
+  border: 1px solid var(--border-hairline);
+  border-radius: var(--radius-lg);
+  padding: 20px 24px;
+  margin-bottom: 32px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* Brochure Preview Section */
+.brochure-preview-card {
+  background-color: var(--surface-card);
+  border: 1px solid var(--border-hairline);
+  border-radius: var(--radius-xl);
+  padding: 48px;
+  box-shadow: var(--shadow-subtle);
+}
+
+.brochure-preview-grid {
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr;
+  gap: 40px;
+  align-items: center;
+}
+
+.brochure-card-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  align-items: center;
+}
+
+.estimator-summary-actions {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
 /* Responsive adjustments */
 @media (max-width: 992px) {
   .hero-grid {
@@ -457,6 +500,13 @@
   .estimator-options,
   .estimator-options.options-umkm {
     grid-template-columns: repeat(2, 1fr);
+  }
+  .brochure-preview-grid {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+  .brochure-preview-card {
+    padding: 36px 28px;
   }
 }
 
@@ -482,15 +532,54 @@
     font-size: 0.6875rem;
     line-height: 1.25;
   }
+  .scope-tiers-banner {
+    padding: 16px 18px;
+    gap: 16px;
+  }
   .estimator-container {
-    padding: 20px;
+    padding: 24px 18px;
+  }
+  .scale-selector {
+    flex-direction: column;
+    gap: 8px;
+    padding: 6px;
+  }
+  .scale-tab-btn {
+    width: 100%;
   }
   .estimator-addons {
     grid-template-columns: 1fr;
   }
   .estimator-summary {
     flex-direction: column;
-    align-items: flex-start;
+    align-items: stretch;
+    gap: 16px;
+  }
+  .estimator-summary-actions {
+    flex-direction: column;
+    width: 100%;
+    gap: 10px;
+  }
+  .estimator-summary-actions .btn,
+  .estimator-summary-actions a {
+    width: 100%;
+    justify-content: center;
+  }
+  .brochure-preview-card {
+    padding: 24px 18px;
+  }
+  .brochure-preview-grid {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+  .brochure-card-actions {
+    flex-direction: column;
+    width: 100%;
+    gap: 10px;
+  }
+  .brochure-card-actions .btn {
+    width: 100%;
+    justify-content: center;
   }
   .floating-whatsapp span {
     display: none;
@@ -499,27 +588,36 @@
     padding: 14px;
     border-radius: var(--radius-full);
   }
-  .brochure-preview-card {
-    padding: 28px 20px;
+}
+
+@media (max-width: 540px) {
+  .hero-title {
+    font-size: 1.875rem;
   }
-  .brochure-preview-grid {
+  .estimator-options,
+  .estimator-options.options-umkm {
     grid-template-columns: 1fr;
-    gap: 28px;
+    gap: 10px;
   }
-}
-
-/* Brochure Preview Section */
-.brochure-preview-card {
-  background-color: var(--surface-card);
-  border: 1px solid var(--border-hairline);
-  border-radius: var(--radius-xl);
-  padding: 48px;
-  box-shadow: var(--shadow-subtle);
-}
-
-.brochure-preview-grid {
-  display: grid;
-  grid-template-columns: 1.15fr 0.85fr;
-  gap: 40px;
-  align-items: center;
+  .option-radio-btn {
+    padding: 14px 12px;
+  }
+  .modal-dialog {
+    padding: 24px 16px;
+    width: calc(100% - 24px);
+    max-width: calc(100% - 24px);
+    margin: 12px auto;
+  }
+  .faq-question {
+    padding: 16px 14px;
+    font-size: 0.9375rem;
+  }
+  .faq-answer {
+    padding: 0 14px 16px 14px;
+    font-size: 0.84375rem;
+  }
+  .scope-tiers-banner {
+    padding: 14px;
+    gap: 12px;
+  }
 }

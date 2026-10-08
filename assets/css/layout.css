@@ -172,15 +172,6 @@
   .grid-3, .grid-4 {
     grid-template-columns: repeat(2, 1fr);
   }
-}
-
-@media (max-width: 768px) {
-  .section {
-    padding: 56px 0;
-  }
-  .section-title {
-    font-size: 1.875rem;
-  }
   .nav-desktop {
     display: none;
   }
@@ -191,6 +182,15 @@
   }
   .header-consult-btn {
     display: none;
+  }
+}
+
+@media (max-width: 768px) {
+  .section {
+    padding: 56px 0;
+  }
+  .section-title {
+    font-size: 1.875rem;
   }
   .header-wa-btn {
     padding: 8px 12px;
@@ -206,6 +206,19 @@
   }
   .grid-2, .grid-3, .grid-4 {
     grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 480px) {
+  .brand-title {
+    font-size: 0.9375rem;
+    white-space: nowrap;
+  }
+  .brand-logo {
+    gap: 8px;
+  }
+  .header-inner {
+    gap: 8px;
   }
 }
 

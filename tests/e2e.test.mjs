@@ -212,3 +212,25 @@ test('Layout Architecture: 82 Percent Viewport Container', () => {
   assert.ok(layoutCss.includes('width: 82%'), 'layout.css must set container width to 82%');
   assert.ok(layoutCss.includes('max-width: 82vw'), 'layout.css must set max-width to 82vw');
 });
+
+test('Responsive Architecture: Breakpoints & Mobile Overflow Safeguards', () => {
+  const tokensCss = fs.readFileSync(path.join(rootDir, 'assets/css/tokens.css'), 'utf8');
+  const sectionsCss = fs.readFileSync(path.join(rootDir, 'assets/css/sections.css'), 'utf8');
+  const layoutCss = fs.readFileSync(path.join(rootDir, 'assets/css/layout.css'), 'utf8');
+  const brochureCss = fs.readFileSync(path.join(rootDir, 'assets/css/brochure.css'), 'utf8');
+
+  // Verify overflow safeguards
+  assert.ok(tokensCss.includes('overflow-x: hidden'), 'tokens.css must enforce overflow-x: hidden on body/html');
+
+  // Verify header desktop nav collapse at 992px
+  assert.ok(layoutCss.includes('@media (max-width: 992px)'), 'layout.css must have 992px breakpoint');
+
+  // Verify sections responsive rules
+  assert.ok(sectionsCss.includes('.brochure-preview-grid'), 'sections.css must define brochure-preview-grid');
+  assert.ok(sectionsCss.includes('.scope-tiers-banner'), 'sections.css must define scope-tiers-banner');
+  assert.ok(sectionsCss.includes('@media (max-width: 540px)'), 'sections.css must have small phone 540px breakpoint');
+
+  // Verify brochure mobile rules
+  assert.ok(brochureCss.includes('.guarantees-grid'), 'brochure.css must define guarantees-grid');
+  assert.ok(brochureCss.includes('.brochure-toolbar-inner'), 'brochure.css must define toolbar mobile layout');
+});
