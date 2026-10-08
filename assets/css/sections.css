@@ -405,9 +405,11 @@
 
 .wf-progress-fill {
   height: 100%;
-  width: 0%;
+  width: 100%;
+  transform-origin: left;
+  transform: scaleX(0);
   background-color: var(--accent-sage);
-  transition: width 0.05s linear;
+  will-change: transform;
 }
 
 /* Workflow Stage Showcase Box */
@@ -1012,4 +1014,14 @@
     padding: 14px;
     gap: 12px;
   }
+}
+
+/* Offscreen section rendering optimization for low-end mobile devices */
+#tech-stack,
+#process,
+#brochure,
+#pricing,
+#faq {
+  content-visibility: auto;
+  contain-intrinsic-size: 1px 700px;
 }

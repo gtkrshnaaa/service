@@ -25,10 +25,15 @@ test('Project Structure: Essential Files Exist', () => {
     'assets/js/workflow.js',
     'assets/js/brochure.js',
     'assets/images/hero-software-architecture.jpg',
+    'assets/images/hero-software-architecture.webp',
     'assets/images/service-digitalisasi-umkm.jpg',
+    'assets/images/service-digitalisasi-umkm.webp',
     'assets/images/service-web-engineering.jpg',
+    'assets/images/service-web-engineering.webp',
     'assets/images/service-mobile-apps.jpg',
+    'assets/images/service-mobile-apps.webp',
     'assets/images/service-backend-laravel.jpg',
+    'assets/images/service-backend-laravel.webp',
     'assets/images/service-custom-software.svg',
     'docs/preview/allpages.md',
     'docs/preview/screenshots.zip',
@@ -331,5 +336,34 @@ test('Interactive Collaboration Workflow Pipeline Verification', () => {
   const brochureHtml = fs.readFileSync(path.join(rootDir, 'brochure.html'), 'utf8');
   assert.ok(brochureHtml.includes('Default Zero-DP (Pay-at-End) Guarantee'), 'brochure.html must feature Zero-DP guarantee');
 });
+
+test('Performance Architecture: WebP Assets, Responsive Pictures, and Battery Optimization', () => {
+  const indexHtml = fs.readFileSync(path.join(rootDir, 'index.html'), 'utf8');
+  const sectionsCss = fs.readFileSync(path.join(rootDir, 'assets/css/sections.css'), 'utf8');
+  const workflowJs = fs.readFileSync(path.join(rootDir, 'assets/js/workflow.js'), 'utf8');
+  const appJs = fs.readFileSync(path.join(rootDir, 'assets/js/app.js'), 'utf8');
+
+  // Verify responsive <picture> elements and WebP sources
+  assert.ok(indexHtml.includes('<picture>'), 'index.html must use <picture> elements');
+  assert.ok(indexHtml.includes('type="image/webp"'), 'index.html must specify WebP MIME type');
+  assert.ok(indexHtml.includes('assets/images/hero-software-architecture.webp'), 'Hero must use WebP');
+  assert.ok(indexHtml.includes('fetchpriority="high"'), 'Hero image must set fetchpriority="high"');
+  assert.ok(indexHtml.includes('decoding="async"'), 'Images must set decoding="async"');
+
+  // Verify content-visibility optimization in CSS
+  assert.ok(sectionsCss.includes('content-visibility: auto'), 'sections.css must define content-visibility: auto for offscreen sections');
+  assert.ok(sectionsCss.includes('contain-intrinsic-size: 1px 700px'), 'sections.css must define contain-intrinsic-size');
+
+  // Verify GPU compositor transform in workflow progress
+  assert.ok(sectionsCss.includes('transform-origin: left'), 'sections.css must set transform-origin: left on progress fill');
+  assert.ok(sectionsCss.includes('will-change: transform'), 'sections.css must set will-change: transform');
+
+  // Verify CPU and battery conservation hooks (IntersectionObserver and visibilitychange)
+  assert.ok(workflowJs.includes('IntersectionObserver'), 'workflow.js must use IntersectionObserver');
+  assert.ok(workflowJs.includes('visibilitychange'), 'workflow.js must listen to visibilitychange');
+  assert.ok(appJs.includes('IntersectionObserver'), 'app.js must use IntersectionObserver');
+  assert.ok(appJs.includes('visibilitychange'), 'app.js must listen to visibilitychange');
+});
+
 
 

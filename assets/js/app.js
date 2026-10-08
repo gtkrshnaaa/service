@@ -566,9 +566,8 @@
     let currentStageIndex = 0;
     let isAutoplayActive = true;
     let progressTimer = null;
-    let progressPercent = 0;
+    let isIntersecting = false;
     const AUTOPLAY_DURATION_MS = 5000;
-    const TICK_INTERVAL_MS = 50;
 
     const tabs = container.querySelectorAll('.wf-step-tab');
     const stageEyebrow = container.querySelector('#wf-stage-eyebrow');
@@ -624,9 +623,10 @@
     }
 
     function resetProgressBar() {
-      progressPercent = 0;
       if (progressBar) {
-        progressBar.style.width = '0%';
+        progressBar.style.transition = 'none';
+        progressBar.style.transformOrigin = 'left';
+        progressBar.style.transform = 'scaleX(0)';
       }
     }
 
@@ -645,21 +645,39 @@
       isAutoplayActive = true;
       updateAutoplayUi();
 
-      progressTimer = setInterval(function () {
-        progressPercent += (TICK_INTERVAL_MS / AUTOPLAY_DURATION_MS) * 100;
-        if (progressBar) {
-          progressBar.style.width = Math.min(progressPercent, 100) + '%';
+      if (!isIntersecting || (typeof document !== 'undefined' && document.hidden)) {
+        return;
+      }
+
+      if (progressBar) {
+        progressBar.style.transition = 'none';
+        progressBar.style.transformOrigin = 'left';
+        progressBar.style.transform = 'scaleX(0)';
+        void progressBar.offsetWidth;
+        progressBar.style.transition = 'transform ' + AUTOPLAY_DURATION_MS + 'ms linear';
+        progressBar.style.transform = 'scaleX(1)';
+      }
+
+      progressTimer = setTimeout(function () {
+        nextStage();
+        if (isAutoplayActive && isIntersecting) {
+          startAutoplay();
         }
-        if (progressPercent >= 100) {
-          nextStage();
-        }
-      }, TICK_INTERVAL_MS);
+      }, AUTOPLAY_DURATION_MS);
     }
 
     function stopAutoplay() {
       if (progressTimer) {
-        clearInterval(progressTimer);
+        clearTimeout(progressTimer);
         progressTimer = null;
+      }
+      if (progressBar) {
+        const computed = window.getComputedStyle(progressBar);
+        const matrix = computed.transform;
+        progressBar.style.transition = 'none';
+        if (matrix && matrix !== 'none') {
+          progressBar.style.transform = matrix;
+        }
       }
     }
 
@@ -738,19 +756,53 @@
 
     container.addEventListener('mouseenter', function () {
       if (isAutoplayActive && progressTimer) {
-        clearInterval(progressTimer);
-        progressTimer = null;
+        stopAutoplay();
       }
     });
 
     container.addEventListener('mouseleave', function () {
-      if (isAutoplayActive && !progressTimer) {
+      if (isAutoplayActive && !progressTimer && isIntersecting) {
         startAutoplay();
       }
     });
 
+    // Viewport IntersectionObserver to conserve mobile CPU and battery
+    if (typeof window !== 'undefined' && 'IntersectionObserver' in window) {
+      const observer = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          isIntersecting = entry.isIntersecting;
+          if (isIntersecting && isAutoplayActive) {
+            startAutoplay();
+          } else {
+            stopAutoplay();
+          }
+        });
+      }, { threshold: 0.15 });
+      observer.observe(container);
+    } else {
+      isIntersecting = true;
+    }
+
+    // Page Visibility API to pause animations when tab/app is hidden
+    if (typeof document !== 'undefined') {
+      document.addEventListener('visibilitychange', function () {
+        if (document.hidden) {
+          stopAutoplay();
+        } else if (isAutoplayActive && isIntersecting) {
+          startAutoplay();
+        }
+      }, { passive: true });
+    }
+
+    // Check prefers-reduced-motion
+    const prefersReduced = typeof window !== 'undefined' && window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (prefersReduced) {
+      isAutoplayActive = false;
+      updateAutoplayUi();
+    }
+
+    // Initial Render
     renderStage(0);
-    startAutoplay();
   }
 
   function bootstrap() {

@@ -380,12 +380,10 @@ export function initWorkflow() {
   if (!container) return;
 
   let currentStageIndex = 0;
-  let autoplayInterval = null;
   let isAutoplayActive = true;
   let progressTimer = null;
-  let progressPercent = 0;
+  let isIntersecting = false;
   const AUTOPLAY_DURATION_MS = 5000;
-  const TICK_INTERVAL_MS = 50;
 
   // Elements
   const tabs = container.querySelectorAll('.wf-step-tab');
@@ -455,9 +453,10 @@ export function initWorkflow() {
   }
 
   function resetProgressBar() {
-    progressPercent = 0;
     if (progressBar) {
-      progressBar.style.width = '0%';
+      progressBar.style.transition = 'none';
+      progressBar.style.transformOrigin = 'left';
+      progressBar.style.transform = 'scaleX(0)';
     }
   }
 
@@ -476,25 +475,40 @@ export function initWorkflow() {
     isAutoplayActive = true;
     updateAutoplayUi();
 
-    progressTimer = setInterval(() => {
-      progressPercent += (TICK_INTERVAL_MS / AUTOPLAY_DURATION_MS) * 100;
-      if (progressBar) {
-        progressBar.style.width = `${Math.min(progressPercent, 100)}%`;
+    // Guard: Only animate if visible in viewport and document is active
+    if (!isIntersecting || (typeof document !== 'undefined' && document.hidden)) {
+      return;
+    }
+
+    if (progressBar) {
+      progressBar.style.transition = 'none';
+      progressBar.style.transformOrigin = 'left';
+      progressBar.style.transform = 'scaleX(0)';
+      void progressBar.offsetWidth; // Trigger GPU compositor sync
+      progressBar.style.transition = `transform ${AUTOPLAY_DURATION_MS}ms linear`;
+      progressBar.style.transform = 'scaleX(1)';
+    }
+
+    progressTimer = setTimeout(() => {
+      nextStage();
+      if (isAutoplayActive && isIntersecting) {
+        startAutoplay();
       }
-      if (progressPercent >= 100) {
-        nextStage();
-      }
-    }, TICK_INTERVAL_MS);
+    }, AUTOPLAY_DURATION_MS);
   }
 
   function stopAutoplay() {
     if (progressTimer) {
-      clearInterval(progressTimer);
+      clearTimeout(progressTimer);
       progressTimer = null;
     }
-    if (autoplayInterval) {
-      clearInterval(autoplayInterval);
-      autoplayInterval = null;
+    if (progressBar) {
+      const computed = window.getComputedStyle(progressBar);
+      const matrix = computed.transform;
+      progressBar.style.transition = 'none';
+      if (matrix && matrix !== 'none') {
+        progressBar.style.transform = matrix;
+      }
     }
   }
 
@@ -524,7 +538,6 @@ export function initWorkflow() {
   tabs.forEach((tab, index) => {
     tab.addEventListener('click', () => {
       renderStage(index);
-      // When user clicks manually, pause or reset timer
       if (isAutoplayActive) {
         startAutoplay();
       }
@@ -584,18 +597,51 @@ export function initWorkflow() {
   // Pause on hover
   container.addEventListener('mouseenter', () => {
     if (isAutoplayActive && progressTimer) {
-      clearInterval(progressTimer);
-      progressTimer = null;
+      stopAutoplay();
     }
   });
 
   container.addEventListener('mouseleave', () => {
-    if (isAutoplayActive && !progressTimer) {
+    if (isAutoplayActive && !progressTimer && isIntersecting) {
       startAutoplay();
     }
   });
 
+  // Viewport IntersectionObserver to conserve mobile CPU and battery
+  if (typeof window !== 'undefined' && 'IntersectionObserver' in window) {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        isIntersecting = entry.isIntersecting;
+        if (isIntersecting && isAutoplayActive) {
+          startAutoplay();
+        } else {
+          stopAutoplay();
+        }
+      });
+    }, { threshold: 0.15 });
+    observer.observe(container);
+  } else {
+    isIntersecting = true;
+  }
+
+  // Page Visibility API to pause animations when tab/app is hidden
+  if (typeof document !== 'undefined') {
+    document.addEventListener('visibilitychange', () => {
+      if (document.hidden) {
+        stopAutoplay();
+      } else if (isAutoplayActive && isIntersecting) {
+        startAutoplay();
+      }
+    }, { passive: true });
+  }
+
+  // Check prefers-reduced-motion
+  const prefersReduced = typeof window !== 'undefined' && window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (prefersReduced) {
+    isAutoplayActive = false;
+    updateAutoplayUi();
+  }
+
   // Initial Render
   renderStage(0);
-  startAutoplay();
 }
