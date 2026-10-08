@@ -27,7 +27,10 @@ test('Project Structure: Essential Files Exist', () => {
     'assets/images/service-web-engineering.jpg',
     'assets/images/service-mobile-apps.jpg',
     'assets/images/service-backend-laravel.jpg',
-    'assets/images/service-custom-software.svg'
+    'assets/images/service-custom-software.svg',
+    'docs/preview/allpages.md',
+    'docs/preview/screenshots.zip',
+    'docs/preview/screenshots/01-landing-desktop.jpg'
   ];
 
   for (const file of requiredFiles) {
@@ -184,7 +187,8 @@ test('Quality Gate: Zero Emojis and Zero Em Dashes', () => {
     'assets/js/navigation.js',
     'assets/js/faq.js',
     'assets/js/select.js',
-    'assets/js/brochure.js'
+    'assets/js/brochure.js',
+    'docs/preview/allpages.md'
   ];
 
   // Em dash check: \u2014

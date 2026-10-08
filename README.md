@@ -4,6 +4,10 @@ Production-grade promotional landing page for software engineering services by G
 
 Live Domain: [https://service.gtkrshnaaa.my.id](https://service.gtkrshnaaa.my.id)
 
+[![Services Portal Desktop Preview](docs/preview/screenshots/01-landing-desktop.jpg)](docs/preview/allpages.md)
+
+*Complete visual gallery available in [docs/preview/allpages.md](docs/preview/allpages.md).*
+
 ---
 
 ## Technical Overview
@@ -101,7 +105,11 @@ The service catalog is strictly divided into two distinct engagement tracks:
 │   │   ├── brochure.js             # Print-to-PDF dispatch and export controller
 │   │   └── app.js                  # Standalone zero-dependency bundle
 │   └── images/                     # 2D architectural sketch illustrations in sage palette
-├── docs/preview/screenshots/       # Visual preview screenshots
+├── docs/
+│   └── preview/
+│       ├── allpages.md                 # Visual gallery and route screenshot index
+│       ├── screenshots/                # High-DPI headless preview captures
+│       └── screenshots.zip             # Portable screenshot archive bundle
 └── tests/
     └── e2e.test.mjs                # Automated assertions suite (Node.js test runner)
 ```
