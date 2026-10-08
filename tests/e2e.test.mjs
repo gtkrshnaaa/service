@@ -444,5 +444,10 @@ test('Brochure Architecture: Dominant Sage Palette & Architectural Illustrations
   assert.ok(brochureHtml.includes('service-mobile-apps.webp'), 'brochure.html must include mobile apps graphic');
   assert.ok(brochureHtml.includes('service-backend-laravel.webp'), 'brochure.html must include backend/integration graphic');
   assert.ok(brochureHtml.includes('service-digitalisasi-umkm.webp'), 'brochure.html must include UMKM digitalization graphic');
+
+  // Verify elimination of AI-slop thick left border on process cards
+  assert.strictEqual(brochureCss.includes('border-left: 3px'), false, 'brochure.css must not use AI-slop thick left borders');
+  assert.ok(brochureCss.includes('.process-deck-step {\n  background-color: #ffffff;\n  border: 1px solid #cad8c6;'), 'brochure.css must use uniform 1px hairline border on process cards');
 });
+
 
