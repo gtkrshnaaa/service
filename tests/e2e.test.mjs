@@ -423,3 +423,26 @@ test('Official Contact Standardization & Social Links', () => {
   assert.strictEqual(indexHtml.includes('(+62 851 5077 1763)'), false, 'index.html must not contain duplicate parenthetical phone format');
   assert.ok(brochureHtml.includes('+62 851-5077-1763'), 'brochure.html must display standardized WhatsApp number');
 });
+
+test('Brochure Architecture: Dominant Sage Palette & Architectural Illustrations', () => {
+  const brochureCss = fs.readFileSync(path.join(rootDir, 'assets/css/brochure.css'), 'utf8');
+  const brochureHtml = fs.readFileSync(path.join(rootDir, 'brochure.html'), 'utf8');
+
+  // Verify dominant sage color styling in brochure.css
+  assert.ok(brochureCss.includes('background-color: #edf2eb'), 'brochure.css must use sage background on body');
+  assert.ok(brochureCss.includes('linear-gradient(180deg, #f7faf6 0%, #f1f6f0 100%)'), 'brochure.css must use sage gradient on sheet');
+  assert.ok(brochureCss.includes('border: 1px solid #cad8c6'), 'brochure.css must use sage borders');
+  assert.ok(brochureCss.includes('.brochure-hero-visual'), 'brochure.css must define .brochure-hero-visual');
+  assert.ok(brochureCss.includes('.deck-card-media'), 'brochure.css must define .deck-card-media');
+
+  // Verify architectural blueprint hero image in brochure.html
+  assert.ok(brochureHtml.includes('hero-software-architecture.webp'), 'brochure.html must include hero architectural blueprint');
+  assert.ok(brochureHtml.includes('brochure-hero-visual'), 'brochure.html must feature .brochure-hero-visual');
+
+  // Verify technical sketch illustrations for all 4 pillars
+  assert.ok(brochureHtml.includes('service-web-engineering.webp'), 'brochure.html must include web engineering graphic');
+  assert.ok(brochureHtml.includes('service-mobile-apps.webp'), 'brochure.html must include mobile apps graphic');
+  assert.ok(brochureHtml.includes('service-backend-laravel.webp'), 'brochure.html must include backend/integration graphic');
+  assert.ok(brochureHtml.includes('service-digitalisasi-umkm.webp'), 'brochure.html must include UMKM digitalization graphic');
+});
+
