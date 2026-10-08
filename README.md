@@ -38,7 +38,7 @@ The service catalog is strictly divided into two distinct engagement tracks:
 
 ### 1. Skala UMKM (Micro, Small & Medium Businesses)
 - **Scope Limit:** Strictly web-only (landing page, digital catalog/profile, up to fullstack Laravel web apps). No mobile apps.
-- **Budget Bounds:** Strictly bounded between **Rp 1.200.000 (IDR 1.2M)** minimum and **Rp 5.000.000 (IDR 5.0M)** maximum.
+- **Budget Bounds:** Strictly bounded between **Rp 1.200.000 (1.2 Juta)** minimum and **Rp 5.000.000 (5.0 Juta)** maximum.
 - **Delivery Timeline:** 3 to 10 business days.
 - **Base Packages:**
   - Landing Page UMKM: Rp 1.200.000 (1 responsive page, SEO basics, direct WhatsApp CTA)

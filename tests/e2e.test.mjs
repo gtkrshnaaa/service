@@ -139,6 +139,30 @@ test('Estimator Pricing Logic: UMKM Clamping Bounds', () => {
   });
 });
 
+test('Quality Gate: No Ambiguous "M" Currency Suffixes in Indonesian Copy', () => {
+  const indexHtml = fs.readFileSync(path.join(rootDir, 'index.html'), 'utf8');
+  const brochureHtml = fs.readFileSync(path.join(rootDir, 'brochure.html'), 'utf8');
+
+  // Regex to detect "Rp ...M" or "+...M" currency shorthand that could be confused with Miliar
+  const ambiguousMRegex = /(Rp\s*\d+(\.\d+)?\s*M|\+\d+(\.\d+)?\s*M)\b/;
+
+  assert.strictEqual(
+    ambiguousMRegex.test(indexHtml),
+    false,
+    'index.html must not use ambiguous "M" suffix for Rupiah millions'
+  );
+  assert.strictEqual(
+    ambiguousMRegex.test(brochureHtml),
+    false,
+    'brochure.html must not use ambiguous "M" suffix for Rupiah millions'
+  );
+
+  // Assert that explicit "Juta" is used
+  assert.ok(indexHtml.includes('Rp 1.2 Juta'), 'index.html must explicitly use Rp 1.2 Juta');
+  assert.ok(indexHtml.includes('Rp 5.0 Juta') || indexHtml.includes('Rp 5 Juta'), 'index.html must explicitly use Rp 5 Juta');
+  assert.ok(brochureHtml.includes('Rp 1.2 Juta'), 'brochure.html must explicitly use Rp 1.2 Juta');
+});
+
 test('Quality Gate: Zero Emojis and Zero Em Dashes', () => {
   const textFiles = [
     'index.html',
