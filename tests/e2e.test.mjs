@@ -408,8 +408,10 @@ test('Official Contact Standardization & Social Links', () => {
   const brochureHtml = fs.readFileSync(path.join(rootDir, 'brochure.html'), 'utf8');
 
   // Verify official email
-  assert.ok(indexHtml.includes('hallo.gtkrshnaaa@gmail.com'), 'index.html must include hallo.gtkrshnaaa@gmail.com');
-  assert.ok(brochureHtml.includes('hallo.gtkrshnaaa@gmail.com'), 'brochure.html must include hallo.gtkrshnaaa@gmail.com');
+  assert.ok(indexHtml.includes('hello.gtkrshnaaa@gmail.com'), 'index.html must include hello.gtkrshnaaa@gmail.com');
+  assert.ok(brochureHtml.includes('hello.gtkrshnaaa@gmail.com'), 'brochure.html must include hello.gtkrshnaaa@gmail.com');
+  assert.strictEqual(indexHtml.includes('hallo.gtkrshnaaa@gmail.com'), false, 'index.html must not contain typo hallo.gtkrshnaaa@gmail.com');
+  assert.strictEqual(brochureHtml.includes('hallo.gtkrshnaaa@gmail.com'), false, 'brochure.html must not contain typo hallo.gtkrshnaaa@gmail.com');
 
   // Verify standardized WhatsApp format
   assert.ok(indexHtml.includes('WhatsApp: +62 851-5077-1763'), 'index.html footer must display single format WhatsApp: +62 851-5077-1763');
