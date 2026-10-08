@@ -9,14 +9,14 @@ export const WORKFLOW_STAGES = [
     title: 'Konsultasi & Pemetaan Kebutuhan',
     shortTitle: 'Konsultasi & Scope',
     duration: '1-2 Hari',
-    summary: 'Diskusi mendalam via WhatsApp atau Google Meet untuk membedah kendala bisnis kamu. Kita tentukan skala solusi yang tepat (UMKM atau Bisnis) tanpa biaya komitmen di muka.',
+    summary: 'Diskusi mendalam via WhatsApp atau Google Meet untuk membedah kendala bisnis kamu. Kita tentukan skala solusi yang tepat (UMKM atau Bisnis). Secara default tanpa uang muka (DP): seluruh transaksi pembayaran jasa dilakukan di akhir setelah proyek selesai dan siap diserahterimakan.',
     deliverables: [
       'Analisis masalah operasional & spesifikasi kebutuhan sistem',
       'Rekomendasi solusi & pemilihan skala layanan yang realistis',
-      'Estimasi biaya transparan dan estimasi timeline pengerjaan terikat'
+      'Estimasi biaya transparan dan kesepakatan tanpa DP di muka'
     ],
-    clientRole: 'Ceritakan alur kerja saat ini dan fitur yang ingin diwujudkan melalui chat atau diskusi santai.',
-    badge: 'Bebas Biaya di Muka',
+    clientRole: 'Cukup ceritakan alur bisnis dan kebutuhan fitur. Tidak ada uang muka (DP) di awal, kecuali jika disepakati bersama bahwa klien memodali hal tertentu untuk pengembangan (seperti domain atau hosting).',
+    badge: 'Default Tanpa DP (Bayar di Akhir)',
     animationType: 'consultation'
   },
   {
@@ -77,11 +77,11 @@ export const WORKFLOW_STAGES = [
     title: 'Peluncuran Resmi & 100% Serah Terima',
     shortTitle: 'Peluncuran & Rilis',
     duration: '1-2 Hari',
-    summary: 'Penyambungan domain resmi klien, konfigurasi SSL aman, rilis sistem ke server produksi (atau paket APK Android), serta penyerahan penuh seluruh source code.',
+    summary: 'Penyambungan domain resmi klien, konfigurasi SSL aman, rilis sistem ke server produksi (atau paket APK Android), penyelesaian transaksi di akhir setelah uji coba tuntas, serta penyerahan 100% kepemilikan source code.',
     deliverables: [
       'Domain resmi aktif dengan sertifikat keamanan SSL HTTPS',
       '100% kepemilikan repository GitHub diserahkan ke akun klien',
-      'Dokumentasi panduan pengoperasian & garansi pemeliharaan awal'
+      'Transaksi jasa diselesaikan di akhir setelah sistem tuntas'
     ],
     clientRole: 'Menerima akses penuh seluruh aset sistem dan mengoperasikan aplikasi secara mandiri.',
     badge: '100% Hak Milik Klien',
@@ -143,7 +143,7 @@ export function getVisualSvg(animationType) {
             </g>
             
             <rect x="294" y="224" width="130" height="18" rx="6" fill="#fbfbfa" stroke="#5a8357" stroke-width="1"/>
-            <text x="359" y="236" font-size="9" font-family="'DM Sans', sans-serif" font-weight="600" fill="#5a8357" text-anchor="middle">Milestone &amp; Budget Fixed</text>
+            <text x="359" y="236" font-size="9" font-family="'DM Sans', sans-serif" font-weight="600" fill="#5a8357" text-anchor="middle">Tanpa DP - Bayar di Akhir</text>
           </g>
         </svg>
       `;

@@ -317,6 +317,19 @@ test('Interactive Collaboration Workflow Pipeline Verification', () => {
 
   // Verify app.js integration
   assert.ok(appJs.includes('initWorkflow()'), 'app.js must call initWorkflow');
+
+  // Verify section title does NOT contain "Bersama Gilang"
+  assert.strictEqual(indexHtml.includes('Bersama Gilang'), false, 'index.html must not contain "Bersama Gilang"');
+  assert.ok(indexHtml.includes('Alur Kolaborasi &amp; Pengerjaan Proyek'), 'index.html must have clean collaboration title');
+
+  // Verify default Zero-DP pay-at-end policy emphasis
+  assert.ok(indexHtml.includes('Default Tanpa DP (Bayar di Akhir)'), 'index.html must feature Zero-DP badge');
+  assert.ok(indexHtml.includes('tanpa uang muka (DP)'), 'index.html must emphasize zero DP in copy');
+  assert.ok(workflowJs.includes('Default Tanpa DP (Bayar di Akhir)'), 'workflow.js must define Zero-DP badge');
+  assert.ok(indexHtml.includes('apakah perlu uang muka (DP)'), 'index.html must have FAQ regarding DP policy');
+
+  const brochureHtml = fs.readFileSync(path.join(rootDir, 'brochure.html'), 'utf8');
+  assert.ok(brochureHtml.includes('Default Zero-DP (Pay-at-End) Guarantee'), 'brochure.html must feature Zero-DP guarantee');
 });
 
 
