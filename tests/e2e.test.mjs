@@ -364,6 +364,55 @@ test('Performance Architecture: WebP Assets, Responsive Pictures, and Battery Op
   assert.ok(appJs.includes('IntersectionObserver'), 'app.js must use IntersectionObserver');
   assert.ok(appJs.includes('visibilitychange'), 'app.js must listen to visibilitychange');
 });
+test('UI Tokens: Custom Selection, Mobile Tap Highlight, and Styled Scrollbar', () => {
+  const tokensCss = fs.readFileSync(path.join(rootDir, 'assets/css/tokens.css'), 'utf8');
 
+  // Verify text selection custom styling
+  assert.ok(tokensCss.includes('::selection'), 'tokens.css must define ::selection');
+  assert.ok(tokensCss.includes('::-moz-selection'), 'tokens.css must define ::-moz-selection');
+  assert.ok(tokensCss.includes('background-color: var(--accent-sage)'), 'tokens.css ::selection must use --accent-sage');
 
+  // Verify mobile tap highlight indicator
+  assert.ok(tokensCss.includes('-webkit-tap-highlight-color: rgba(90, 131, 87, 0.18)'), 'tokens.css must set themed -webkit-tap-highlight-color');
 
+  // Verify custom styled scrollbars
+  assert.ok(tokensCss.includes('::-webkit-scrollbar'), 'tokens.css must define ::-webkit-scrollbar');
+  assert.ok(tokensCss.includes('::-webkit-scrollbar-thumb'), 'tokens.css must define ::-webkit-scrollbar-thumb');
+  assert.ok(tokensCss.includes('scrollbar-color: #cad2c5 #f4f3ef'), 'tokens.css must define W3C standard scrollbar-color');
+});
+
+test('Mobile UI Precision: Rigid Icon Buttons, Themed Checkboxes, and FAQ Bugfix', () => {
+  const componentsCss = fs.readFileSync(path.join(rootDir, 'assets/css/components.css'), 'utf8');
+  const sectionsCss = fs.readFileSync(path.join(rootDir, 'assets/css/sections.css'), 'utf8');
+
+  // Verify .btn-icon-only definition
+  assert.ok(componentsCss.includes('.btn-icon-only'), 'components.css must define .btn-icon-only');
+  assert.ok(componentsCss.includes('flex-shrink: 0'), 'components.css .btn-icon-only must set flex-shrink: 0');
+
+  // Verify .themed-checkbox box model rigidity
+  assert.ok(componentsCss.includes('.themed-checkbox'), 'components.css must define .themed-checkbox');
+  assert.ok(componentsCss.includes('flex: 0 0 18px'), 'components.css .themed-checkbox must enforce flex: 0 0 18px');
+  assert.ok(componentsCss.includes('display: inline-grid'), 'components.css .themed-checkbox must set display: inline-grid');
+
+  // Verify .chip-scope for preventing awkward wrapping
+  assert.ok(componentsCss.includes('.chip-scope'), 'components.css must define .chip-scope');
+  assert.ok(componentsCss.includes('white-space: nowrap'), 'components.css .chip-scope must have white-space: nowrap');
+
+  // Verify mobile FAQ accordion leak safeguard
+  assert.ok(sectionsCss.includes('.faq-answer'), 'sections.css must style .faq-answer');
+  assert.ok(sectionsCss.includes('visibility: hidden'), 'sections.css .faq-answer closed state must set visibility: hidden');
+});
+
+test('Official Contact Standardization & Social Links', () => {
+  const indexHtml = fs.readFileSync(path.join(rootDir, 'index.html'), 'utf8');
+  const brochureHtml = fs.readFileSync(path.join(rootDir, 'brochure.html'), 'utf8');
+
+  // Verify official email
+  assert.ok(indexHtml.includes('hallo.gtkrshnaaa@gmail.com'), 'index.html must include hallo.gtkrshnaaa@gmail.com');
+  assert.ok(brochureHtml.includes('hallo.gtkrshnaaa@gmail.com'), 'brochure.html must include hallo.gtkrshnaaa@gmail.com');
+
+  // Verify standardized WhatsApp format
+  assert.ok(indexHtml.includes('WhatsApp: +62 851-5077-1763'), 'index.html footer must display single format WhatsApp: +62 851-5077-1763');
+  assert.strictEqual(indexHtml.includes('(+62 851 5077 1763)'), false, 'index.html must not contain duplicate parenthetical phone format');
+  assert.ok(brochureHtml.includes('+62 851-5077-1763'), 'brochure.html must display standardized WhatsApp number');
+});

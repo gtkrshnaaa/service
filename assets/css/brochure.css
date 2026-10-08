@@ -81,7 +81,7 @@
 
 .brochure-meta-grid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
   gap: 16px;
   background-color: var(--surface-alt);
   border: 1px solid var(--border-hairline-subtle);
