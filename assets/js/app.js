@@ -209,9 +209,10 @@
     let currentPlatformBisnis = 'web';
 
     const umkmRates = {
-      'umkm-landing': { base: 1200000, duration: '3 - 5 hari kerja', label: 'Landing Page / Company Profile' },
-      'umkm-catalog': { base: 2500000, duration: '1 - 2 minggu', label: 'Web Bisnis & Katalog Produk' },
-      'umkm-laravel': { base: 3800000, duration: '2 - 3 minggu', label: 'Fullstack Laravel Web UMKM' }
+      'umkm-landing': { base: 600000, duration: '1 - 3 hari kerja', label: 'Landing Page (1 Halaman)' },
+      'umkm-multipage': { base: 1200000, duration: '3 - 5 hari kerja', label: 'Web Profil Multi-Halaman' },
+      'umkm-catalog': { base: 2500000, duration: '5 - 7 hari kerja', label: 'Web Bisnis & Katalog Produk' },
+      'umkm-laravel': { base: 3800000, duration: '7 - 10 hari kerja', label: 'Fullstack Laravel Web UMKM' }
     };
 
     const bisnisRates = {
@@ -290,8 +291,8 @@
           selectedAddons.push(cb.getAttribute('data-name') || 'Add-on');
         });
 
-        // Strict enforcement of UMKM budget boundaries: min 1.2M, max 5.0M
-        total = Math.min(5000000, Math.max(1200000, total));
+        // Strict enforcement of UMKM budget boundaries: min 600k, max 5.0M
+        total = Math.min(5000000, Math.max(600000, total));
       } else {
         const item = bisnisRates[currentPlatformBisnis] || bisnisRates.web;
         const scopeVal = scopeSelect ? scopeSelect.value : 'starter';
