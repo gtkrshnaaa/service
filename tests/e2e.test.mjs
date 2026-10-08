@@ -32,7 +32,8 @@ test('Project Structure: Essential Files Exist', () => {
     'assets/images/service-custom-software.svg',
     'docs/preview/allpages.md',
     'docs/preview/screenshots.zip',
-    'docs/preview/screenshots/01-landing-desktop.jpg'
+    'docs/preview/screenshots/01-landing-desktop.jpg',
+    'docs/preview/screenshots/07-workflow-interactive.jpg'
   ];
 
   for (const file of requiredFiles) {

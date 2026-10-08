@@ -48,3 +48,11 @@ Official printable specification sheet formatted with technical pillars, compete
 Single-column responsive layout for mobile readers, featuring a two-row sticky action toolbar and stacked capability cards.
 
 ![06-brochure-mobile.jpg](screenshots/06-brochure-mobile.jpg)
+
+---
+
+### 07. Interactive Collaboration Workflow Pipeline (Desktop Viewport)
+Dynamic animated engineering process pipeline featuring 5-stage stepper, progress timer bar, SVG technical blueprints, and client role deliverables.
+
+![07-workflow-interactive.jpg](screenshots/07-workflow-interactive.jpg)
+
