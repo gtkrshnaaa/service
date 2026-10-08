@@ -69,20 +69,20 @@ export function initModal() {
   if (form) {
     form.addEventListener('submit', (e) => {
       e.preventDefault();
-      const name = document.getElementById('client-name')?.value || 'Client';
-      const service = document.getElementById('modal-service-select')?.value || 'Software Engineering';
-      const notes = document.getElementById('client-notes')?.value || 'No additional notes';
+      const name = document.getElementById('client-name')?.value || 'Klien';
+      const service = document.getElementById('modal-service-select')?.value || 'Software Engineering Consultation';
+      const notes = document.getElementById('client-notes')?.value || 'Tidak ada catatan tambahan';
 
       const msg = [
-        'Hello Gilang Teja Krishna,',
-        'I am submitting an inquiry for software engineering services.',
+        'Halo Gilang Teja Krishna,',
+        'Saya ingin mengajukan konsultasi teknis untuk software engineering.',
         '',
-        '*Client Inquiry Details:*',
-        '- Name: ' + name,
-        '- Service Required: ' + service,
-        '- Project Brief: ' + notes,
+        '*Detail Konsultasi Proyek:*',
+        '- Nama: ' + name,
+        '- Layanan / Skala: ' + service,
+        '- Ringkasan Kebutuhan: ' + notes,
         '',
-        'Looking forward to your technical response and schedule.'
+        'Mohon informasi jadwal konsultasi dan alur pengerjaan berikutnya.'
       ].join('\n');
 
       const waPhone = '6285150771763';

@@ -191,35 +191,74 @@
   }
 
   function initEstimator() {
-    const platformButtons = document.querySelectorAll('.option-radio-btn[data-platform]');
+    const scaleButtons = document.querySelectorAll('.scale-tab-btn[data-scale]');
+    const optionsUmkm = document.getElementById('options-umkm');
+    const optionsBisnis = document.getElementById('options-bisnis');
+    const addonsUmkm = document.getElementById('addons-umkm');
+    const addonsBisnis = document.getElementById('addons-bisnis');
+    const tierGroupBisnis = document.getElementById('tier-group-bisnis');
     const scopeSelect = document.getElementById('project-scope');
-    const addonCheckboxes = document.querySelectorAll('.addon-checkbox');
     const priceDisplay = document.getElementById('price-estimate-val');
     const durationDisplay = document.getElementById('duration-estimate-val');
     const waEstimatorBtn = document.getElementById('wa-estimator-trigger');
 
     if (!priceDisplay || !waEstimatorBtn) return;
 
-    const baseRates = {
+    let currentScale = 'umkm';
+    let currentPlatformUmkm = 'umkm-landing';
+    let currentPlatformBisnis = 'web';
+
+    const umkmRates = {
+      'umkm-landing': { base: 1200000, duration: '3 - 5 hari kerja', label: 'Landing Page / Company Profile' },
+      'umkm-catalog': { base: 2500000, duration: '1 - 2 minggu', label: 'Web Bisnis & Katalog Produk' },
+      'umkm-laravel': { base: 3800000, duration: '2 - 3 minggu', label: 'Fullstack Laravel Web UMKM' }
+    };
+
+    const bisnisRates = {
       web: { base: 8500000, duration: '2 - 3 weeks', label: 'Web Application Engineering' },
       mobile: { base: 12000000, duration: '3 - 4 weeks', label: 'Mobile App (Flutter / React Native)' },
       laravel: { base: 10500000, duration: '2 - 4 weeks', label: 'Fullstack Laravel & Backend' },
       custom: { base: 16500000, duration: '4 - 6 weeks', label: 'Custom Multi-platform Suite' }
     };
 
-    const scopeMultipliers = {
+    const bisnisMultipliers = {
       starter: { mult: 1.0, durationMod: '1 - 2 weeks' },
       production: { mult: 1.6, durationMod: '3 - 4 weeks' },
       enterprise: { mult: 2.5, durationMod: '6 - 8 weeks' }
     };
 
-    let currentPlatform = 'web';
-
-    platformButtons.forEach(function (btn) {
+    scaleButtons.forEach(function (btn) {
       btn.addEventListener('click', function () {
-        platformButtons.forEach(function (b) { b.classList.remove('active'); });
+        scaleButtons.forEach(function (b) { b.classList.remove('active'); });
         btn.classList.add('active');
-        currentPlatform = btn.getAttribute('data-platform') || 'web';
+        currentScale = btn.getAttribute('data-scale') || 'umkm';
+        syncScaleVisibility();
+        recalculate();
+      });
+    });
+
+    function syncScaleVisibility() {
+      if (optionsUmkm) optionsUmkm.style.display = currentScale === 'umkm' ? 'grid' : 'none';
+      if (optionsBisnis) optionsBisnis.style.display = currentScale === 'bisnis' ? 'grid' : 'none';
+      if (addonsUmkm) addonsUmkm.style.display = currentScale === 'umkm' ? 'grid' : 'none';
+      if (addonsBisnis) addonsBisnis.style.display = currentScale === 'bisnis' ? 'grid' : 'none';
+      if (tierGroupBisnis) tierGroupBisnis.style.display = currentScale === 'bisnis' ? 'block' : 'none';
+    }
+
+    document.querySelectorAll('.option-radio-btn[data-platform]').forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        const platformVal = btn.getAttribute('data-platform') || '';
+        const parentGrid = btn.closest('.estimator-options');
+        if (parentGrid) {
+          parentGrid.querySelectorAll('.option-radio-btn').forEach(function (b) { b.classList.remove('active'); });
+        }
+        btn.classList.add('active');
+
+        if (currentScale === 'umkm') {
+          currentPlatformUmkm = platformVal;
+        } else {
+          currentPlatformBisnis = platformVal;
+        }
         recalculate();
       });
     });
@@ -228,49 +267,70 @@
       scopeSelect.addEventListener('change', recalculate);
     }
 
-    addonCheckboxes.forEach(function (checkbox) {
-      checkbox.addEventListener('change', recalculate);
+    document.querySelectorAll('.addon-checkbox').forEach(function (cb) {
+      cb.addEventListener('change', recalculate);
     });
 
     function recalculate() {
-      const platformData = baseRates[currentPlatform] || baseRates.web;
-      const scopeVal = scopeSelect ? scopeSelect.value : 'starter';
-      const scopeData = scopeMultipliers[scopeVal] || scopeMultipliers.starter;
-
-      let total = platformData.base * scopeData.mult;
+      let total = 0;
+      let durationText = '';
+      let platformLabel = '';
       let selectedAddons = [];
+      const isUmkm = currentScale === 'umkm';
 
-      addonCheckboxes.forEach(function (cb) {
-        if (cb.checked) {
-          const addonCost = parseInt(cb.getAttribute('data-cost') || '0', 10);
-          total += addonCost;
+      if (isUmkm) {
+        const item = umkmRates[currentPlatformUmkm] || umkmRates['umkm-landing'];
+        total = item.base;
+        durationText = item.duration;
+        platformLabel = item.label;
+
+        const activeAddons = addonsUmkm ? addonsUmkm.querySelectorAll('.addon-checkbox:checked') : [];
+        activeAddons.forEach(function (cb) {
+          total += parseInt(cb.getAttribute('data-cost') || '0', 10);
           selectedAddons.push(cb.getAttribute('data-name') || 'Add-on');
-        }
-      });
+        });
+
+        // Strict enforcement of UMKM budget boundaries: min 1.2M, max 5.0M
+        total = Math.min(5000000, Math.max(1200000, total));
+      } else {
+        const item = bisnisRates[currentPlatformBisnis] || bisnisRates.web;
+        const scopeVal = scopeSelect ? scopeSelect.value : 'starter';
+        const scopeData = bisnisMultipliers[scopeVal] || bisnisMultipliers.starter;
+
+        total = item.base * scopeData.mult;
+        durationText = scopeData.durationMod;
+        platformLabel = item.label + ' (' + (scopeVal.charAt(0).toUpperCase() + scopeVal.slice(1)) + ')';
+
+        const activeAddons = addonsBisnis ? addonsBisnis.querySelectorAll('.addon-checkbox:checked') : [];
+        activeAddons.forEach(function (cb) {
+          total += parseInt(cb.getAttribute('data-cost') || '0', 10);
+          selectedAddons.push(cb.getAttribute('data-name') || 'Add-on');
+        });
+      }
 
       const formattedPrice = 'Rp ' + Math.round(total).toLocaleString('id-ID');
       priceDisplay.textContent = formattedPrice;
-      if (durationDisplay) {
-        durationDisplay.textContent = scopeData.durationMod;
-      }
+      if (durationDisplay) durationDisplay.textContent = durationText;
 
+      const scaleTitle = isUmkm ? 'Skala UMKM (Web Only)' : 'Skala Bisnis';
       const msg = [
-        'Hello Gilang Teja Krishna,',
-        'I would like to inquire about software engineering services.',
+        'Halo Gilang Teja Krishna,',
+        'Saya ingin konsultasi mengenai software engineering service.',
         '',
-        '*Project Scope Estimate:*',
-        '- Platform: ' + platformData.label,
-        '- Tier: ' + (scopeVal.charAt(0).toUpperCase() + scopeVal.slice(1)),
-        '- Estimated Budget: ' + formattedPrice,
-        selectedAddons.length > 0 ? '- Add-ons: ' + selectedAddons.join(', ') : '',
+        '*Estimasi Spesifikasi Proyek:*',
+        '- Skala Layanan: ' + scaleTitle,
+        '- Solusi / Platform: ' + platformLabel,
+        '- Estimasi Biaya: ' + formattedPrice,
+        '- Estimasi Pengerjaan: ' + durationText,
+        selectedAddons.length > 0 ? '- Fitur Tambahan: ' + selectedAddons.join(', ') : '',
         '',
-        'Could we schedule a consultation to discuss technical specifications and timeline?'
+        'Bisa kita jadwalkan sesi konsultasi untuk membahas detail teknis dan kebutuhan proyek?'
       ].filter(Boolean).join('\n');
 
-      const waPhone = '6285150771763';
-      waEstimatorBtn.href = 'https://wa.me/' + waPhone + '?text=' + encodeURIComponent(msg);
+      waEstimatorBtn.href = 'https://wa.me/6285150771763?text=' + encodeURIComponent(msg);
     }
 
+    syncScaleVisibility();
     recalculate();
   }
 
@@ -345,20 +405,20 @@
     if (form) {
       form.addEventListener('submit', function (e) {
         e.preventDefault();
-        const name = document.getElementById('client-name')?.value || 'Client';
-        const service = document.getElementById('modal-service-select')?.value || 'Software Engineering';
-        const notes = document.getElementById('client-notes')?.value || 'No additional notes';
+        const name = document.getElementById('client-name')?.value || 'Klien';
+        const service = document.getElementById('modal-service-select')?.value || 'Software Engineering Consultation';
+        const notes = document.getElementById('client-notes')?.value || 'Tidak ada catatan tambahan';
 
         const msg = [
-          'Hello Gilang Teja Krishna,',
-          'I am submitting an inquiry for software engineering services.',
+          'Halo Gilang Teja Krishna,',
+          'Saya ingin mengajukan konsultasi teknis untuk software engineering.',
           '',
-          '*Client Inquiry Details:*',
-          '- Name: ' + name,
-          '- Service Required: ' + service,
-          '- Project Brief: ' + notes,
+          '*Detail Konsultasi Proyek:*',
+          '- Nama: ' + name,
+          '- Layanan / Skala: ' + service,
+          '- Ringkasan Kebutuhan: ' + notes,
           '',
-          'Looking forward to your technical response and schedule.'
+          'Mohon informasi jadwal konsultasi dan alur pengerjaan berikutnya.'
         ].join('\n');
 
         const waPhone = '6285150771763';
