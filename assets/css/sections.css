@@ -267,7 +267,7 @@
 
 .addon-card {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: space-between;
   gap: 12px;
   padding: 14px 18px;
@@ -280,10 +280,20 @@
 
 .addon-card > div:first-child {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   gap: 12px;
   min-width: 0;
   flex: 1;
+}
+
+.addon-card .themed-checkbox {
+  margin-top: 1px;
+}
+
+.addon-card .chip {
+  align-self: flex-start;
+  margin-top: 1px;
+  flex-shrink: 0;
 }
 
 .addon-card:hover {

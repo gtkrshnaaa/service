@@ -401,6 +401,10 @@ test('Mobile UI Precision: Rigid Icon Buttons, Themed Checkboxes, and FAQ Bugfix
   // Verify mobile FAQ accordion leak safeguard
   assert.ok(sectionsCss.includes('.faq-answer'), 'sections.css must style .faq-answer');
   assert.ok(sectionsCss.includes('visibility: hidden'), 'sections.css .faq-answer closed state must set visibility: hidden');
+
+  // Verify .addon-card and checkbox top alignment beside title
+  assert.ok(sectionsCss.includes('.addon-card {\n  display: flex;\n  align-items: flex-start;'), 'sections.css must set .addon-card to align-items: flex-start');
+  assert.ok(sectionsCss.includes('.addon-card .themed-checkbox {\n  margin-top: 1px;\n}'), 'sections.css must align .addon-card checkbox with top margin');
 });
 
 test('Official Contact Standardization & Social Links', () => {
