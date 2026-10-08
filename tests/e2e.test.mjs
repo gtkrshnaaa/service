@@ -24,6 +24,7 @@ test('Project Structure: Essential Files Exist', () => {
     'assets/js/select.js',
     'assets/js/brochure.js',
     'assets/images/hero-software-architecture.jpg',
+    'assets/images/service-digitalisasi-umkm.jpg',
     'assets/images/service-web-engineering.jpg',
     'assets/images/service-mobile-apps.jpg',
     'assets/images/service-backend-laravel.jpg',
