@@ -56,3 +56,10 @@ Dynamic animated engineering process pipeline featuring 5-stage stepper, progres
 
 ![07-workflow-interactive.jpg](screenshots/07-workflow-interactive.jpg)
 
+---
+
+### 08. Capabilities Brochure Process Deck & Competency Matrix (Desktop Viewport)
+Engineering protocol and competency matrix view within the brochure sheet showing uniform 1px hairline architectural cards and subtle radius styling.
+
+![08-brochure-process-deck.jpg](screenshots/08-brochure-process-deck.jpg)
+
