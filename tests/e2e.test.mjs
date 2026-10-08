@@ -405,6 +405,7 @@ test('Mobile UI Precision: Rigid Icon Buttons, Themed Checkboxes, and FAQ Bugfix
   // Verify .addon-card and checkbox top alignment beside title
   assert.ok(sectionsCss.includes('.addon-card {\n  display: flex;\n  align-items: flex-start;'), 'sections.css must set .addon-card to align-items: flex-start');
   assert.ok(sectionsCss.includes('.addon-card .themed-checkbox {\n  margin-top: 1px;\n}'), 'sections.css must align .addon-card checkbox with top margin');
+  assert.ok(sectionsCss.includes('.addon-card .chip {\n  display: inline-flex;'), 'sections.css must style .addon-card .chip below description text');
 });
 
 test('Official Contact Standardization & Social Links', () => {

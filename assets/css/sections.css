@@ -268,7 +268,6 @@
 .addon-card {
   display: flex;
   align-items: flex-start;
-  justify-content: space-between;
   gap: 12px;
   padding: 14px 18px;
   border-radius: var(--radius-md);
@@ -284,6 +283,7 @@
   gap: 12px;
   min-width: 0;
   flex: 1;
+  width: 100%;
 }
 
 .addon-card .themed-checkbox {
@@ -291,8 +291,11 @@
 }
 
 .addon-card .chip {
-  align-self: flex-start;
-  margin-top: 1px;
+  display: inline-flex;
+  font-size: 0.75rem;
+  padding: 3px 8px;
+  margin-top: 8px;
+  width: fit-content;
   flex-shrink: 0;
 }
 
