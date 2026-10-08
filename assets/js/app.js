@@ -209,17 +209,17 @@
     let currentPlatformBisnis = 'web';
 
     const umkmRates = {
-      'umkm-landing': { base: 600000, duration: '1 - 3 hari kerja', label: 'Landing Page (1 Halaman)' },
-      'umkm-multipage': { base: 1200000, duration: '3 - 5 hari kerja', label: 'Web Profil Multi-Halaman' },
-      'umkm-catalog': { base: 2500000, duration: '5 - 7 hari kerja', label: 'Web Bisnis & Katalog Produk' },
-      'umkm-laravel': { base: 3800000, duration: '7 - 10 hari kerja', label: 'Fullstack Laravel Web UMKM' }
+      'umkm-landing': { base: 600000, duration: '1 - 3 hari kerja', label: 'Landing Page Promosi (1 Halaman)' },
+      'umkm-multipage': { base: 1200000, duration: '3 - 5 hari kerja', label: 'Web Profil Usaha Multi-Halaman' },
+      'umkm-catalog': { base: 2500000, duration: '5 - 7 hari kerja', label: 'Web Showcase & Katalog Produk' },
+      'umkm-laravel': { base: 3800000, duration: '7 - 10 hari kerja', label: 'Sistem Web Usaha Fullstack' }
     };
 
     const bisnisRates = {
-      web: { base: 8500000, duration: '2 - 3 weeks', label: 'Web Application Engineering' },
-      mobile: { base: 12000000, duration: '3 - 4 weeks', label: 'Mobile App (Flutter / React Native)' },
-      laravel: { base: 10500000, duration: '2 - 4 weeks', label: 'Fullstack Laravel & Backend' },
-      custom: { base: 16500000, duration: '4 - 6 weeks', label: 'Custom Multi-platform Suite' }
+      web: { base: 8500000, duration: '2 - 3 weeks', label: 'Aplikasi Web & Portal Operasional' },
+      mobile: { base: 12000000, duration: '3 - 4 weeks', label: 'Aplikasi Mobile Android' },
+      laravel: { base: 10500000, duration: '2 - 4 weeks', label: 'Integrasi Sistem Terpusat' },
+      custom: { base: 16500000, duration: '4 - 6 weeks', label: 'Paket Terpadu Web & Android' }
     };
 
     const bisnisMultipliers = {
