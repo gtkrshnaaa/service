@@ -3,6 +3,7 @@ import { initModal } from './modal.js';
 import { initNavigation } from './navigation.js';
 import { initFaq } from './faq.js';
 import { initCustomSelects } from './select.js';
+import { initWorkflow } from './workflow.js';
 
 document.addEventListener('DOMContentLoaded', () => {
   initNavigation();
@@ -10,4 +11,5 @@ document.addEventListener('DOMContentLoaded', () => {
   initEstimator();
   initModal();
   initFaq();
+  initWorkflow();
 });

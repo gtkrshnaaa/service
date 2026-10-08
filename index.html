@@ -513,48 +513,151 @@
     </div>
   </section>
 
-  <!-- Engineering Process Roadmap -->
+  <!-- Engineering Collaboration Process & Interactive Workflow -->
   <section id="process" class="section section-alt">
     <div class="container">
       <div class="section-header text-center">
-        <span class="eyebrow">Standar Eksekusi &bull; Engineering Process</span>
-        <h2 class="section-title">Siklus Pengerjaan Rekayasa Perangkat Lunak</h2>
+        <span class="eyebrow">Alur Kerjasama Transparan &bull; Engineering Lifecycle</span>
+        <h2 class="section-title">Alur Kolaborasi &amp; Pengerjaan Proyek Bersama Gilang</h2>
         <p class="section-description">
-          Setiap proyek dikerjakan dengan alur pipeline terstruktur, milestone transparan, versioned git commits, dan zero guesswork.
+          Setiap proyek dikerjakan dengan alur pipeline terstruktur, milestone transparan, demo progres langsung di live staging, dan zero guesswork.
         </p>
       </div>
 
-      <div class="grid-4">
-        <div class="workflow-card">
-          <div class="workflow-step-num">01</div>
-          <h3 style="font-size: 1.125rem; font-weight: 600;">Analisis &amp; Desain Arsitektur</h3>
-          <p style="font-size: 0.875rem; color: var(--text-secondary); line-height: 1.6;">
-            Deep technical discovery, perancangan kontrak API, pemodelan skema database relasional, dan penyusunan roadmap sprint.
-          </p>
+      <div class="workflow-interactive-container" id="workflow-interactive">
+        <!-- Interactive Stepper Tabs -->
+        <div class="wf-stepper-wrapper">
+          <div class="wf-stepper-track" role="tablist" aria-label="Alur Kerjasama Pengerjaan">
+            <button type="button" class="wf-step-tab active" role="tab" aria-selected="true" data-step="0" id="wf-tab-0" aria-controls="wf-panel">
+              <span class="wf-tab-num">01</span>
+              <span class="wf-tab-label">Konsultasi &amp; Scope</span>
+            </button>
+            <button type="button" class="wf-step-tab" role="tab" aria-selected="false" data-step="1" id="wf-tab-1" aria-controls="wf-panel">
+              <span class="wf-tab-num">02</span>
+              <span class="wf-tab-label">Desain Arsitektur</span>
+            </button>
+            <button type="button" class="wf-step-tab" role="tab" aria-selected="false" data-step="2" id="wf-tab-2" aria-controls="wf-panel">
+              <span class="wf-tab-num">03</span>
+              <span class="wf-tab-label">Pengerjaan &amp; Demo</span>
+            </button>
+            <button type="button" class="wf-step-tab" role="tab" aria-selected="false" data-step="3" id="wf-tab-3" aria-controls="wf-panel">
+              <span class="wf-tab-num">04</span>
+              <span class="wf-tab-label">Uji Coba Bersama</span>
+            </button>
+            <button type="button" class="wf-step-tab" role="tab" aria-selected="false" data-step="4" id="wf-tab-4" aria-controls="wf-panel">
+              <span class="wf-tab-num">05</span>
+              <span class="wf-tab-label">Peluncuran &amp; Rilis</span>
+            </button>
+          </div>
+          <div class="wf-progress-line">
+            <div class="wf-progress-fill" id="wf-progress-bar"></div>
+          </div>
         </div>
 
-        <div class="workflow-card">
-          <div class="workflow-step-num">02</div>
-          <h3 style="font-size: 1.125rem; font-weight: 600;">Sprint Pengerjaan Modular</h3>
-          <p style="font-size: 0.875rem; color: var(--text-secondary); line-height: 1.6;">
-            Implementasi modular mematuhi single responsibility principle, standar clean code, dan pengetikan data ketat (type-safe).
-          </p>
+        <!-- Stage Showcase Box -->
+        <div class="wf-stage-showcase" id="wf-panel" role="tabpanel" aria-labelledby="wf-tab-0">
+          <div class="wf-stage-content">
+            <div class="wf-stage-meta">
+              <span class="wf-eyebrow-text" id="wf-stage-eyebrow">Tahap 01 &bull; Penjajakan Awal</span>
+              <span class="wf-duration-badge">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                  <circle cx="12" cy="12" r="10"></circle>
+                  <polyline points="12 6 12 12 16 14"></polyline>
+                </svg>
+                <span id="wf-stage-duration">1-2 Hari</span>
+              </span>
+              <span class="chip" id="wf-stage-badge" style="font-size: 0.6875rem;">Bebas Biaya di Muka</span>
+            </div>
+
+            <h3 class="wf-title-text" id="wf-stage-title">Konsultasi &amp; Pemetaan Kebutuhan</h3>
+
+            <p class="wf-summary-text" id="wf-stage-summary">
+              Diskusi mendalam via WhatsApp atau Google Meet untuk membedah kendala bisnis kamu. Kita tentukan skala solusi yang tepat (UMKM atau Bisnis) tanpa biaya komitmen di muka.
+            </p>
+
+            <div>
+              <div class="wf-deliverables-title">Hasil Nyata yang Kamu Dapatkan</div>
+              <ul class="wf-deliverables-list" id="wf-stage-deliverables">
+                <li class="wf-deliverable-item">
+                  <svg class="wf-check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="20 6 9 17 4 12"></polyline>
+                  </svg>
+                  <span>Analisis masalah operasional &amp; spesifikasi kebutuhan sistem</span>
+                </li>
+                <li class="wf-deliverable-item">
+                  <svg class="wf-check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="20 6 9 17 4 12"></polyline>
+                  </svg>
+                  <span>Rekomendasi solusi &amp; pemilihan skala layanan yang realistis</span>
+                </li>
+                <li class="wf-deliverable-item">
+                  <svg class="wf-check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="20 6 9 17 4 12"></polyline>
+                  </svg>
+                  <span>Estimasi biaya transparan dan estimasi timeline pengerjaan terikat</span>
+                </li>
+              </ul>
+            </div>
+
+            <div class="wf-client-role-box">
+              <span class="wf-client-role-label">Peran Kamu di Tahap Ini</span>
+              <p class="wf-client-role-text" id="wf-stage-client-role">
+                Ceritakan alur kerja saat ini dan fitur yang ingin diwujudkan melalui chat atau diskusi santai.
+              </p>
+            </div>
+
+            <div class="wf-stage-actions">
+              <button class="btn btn-primary" data-open-modal data-service-preselect="Konsultasi Alur Kerjasama" id="wf-cta-btn" style="padding: 10px 18px;">
+                Konsultasikan Proyek Sekarang
+              </button>
+              <button type="button" class="btn btn-secondary" id="wf-next-btn" style="padding: 10px 16px;">
+                Tahap Berikutnya
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="9 18 15 12 9 6"></polyline>
+                </svg>
+              </button>
+            </div>
+          </div>
+
+          <!-- Animated Visual Simulation Display -->
+          <div class="wf-stage-visual">
+            <div class="wf-visual-wrapper" id="wf-visual-slot">
+              <!-- Rendered via JS dynamically -->
+            </div>
+          </div>
         </div>
 
-        <div class="workflow-card">
-          <div class="workflow-step-num">03</div>
-          <h3 style="font-size: 1.125rem; font-weight: 600;">Pengujian Menyeluruh (Testing)</h3>
-          <p style="font-size: 0.875rem; color: var(--text-secondary); line-height: 1.6;">
-            Automated integration tests, pemeriksaan regresi, audit keamanan dasar, dan profiling latensi dalam kondisi realistis.
-          </p>
-        </div>
+        <!-- Controls Toolbar -->
+        <div class="wf-controls-bar">
+          <div class="wf-controls-left">
+            <button type="button" class="wf-autoplay-btn" id="wf-autoplay-toggle" aria-pressed="true">
+              <span class="wf-autoplay-icon">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                  <rect x="6" y="4" width="4" height="16" rx="1"></rect>
+                  <rect x="14" y="4" width="4" height="16" rx="1"></rect>
+                </svg>
+              </span>
+              <span class="wf-autoplay-label">Jeda Otomatis</span>
+            </button>
+            <span style="font-size: 0.8125rem; color: var(--text-secondary);">
+              Animasi alur berganti otomatis per tahap
+            </span>
+          </div>
 
-        <div class="workflow-card">
-          <div class="workflow-step-num">04</div>
-          <h3 style="font-size: 1.125rem; font-weight: 600;">Deployment &amp; Serah Terima</h3>
-          <p style="font-size: 0.875rem; color: var(--text-secondary); line-height: 1.6;">
-            Automasi rilis CI/CD, migrasi zero-downtime, dokumentasi arsitektur lengkap, dan serah terima 100% kepemilikan repository.
-          </p>
+          <div class="wf-controls-right">
+            <button type="button" class="wf-nav-btn" id="wf-prev-btn" aria-label="Tahap Sebelumnya">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="15 18 9 12 15 6"></polyline>
+              </svg>
+              <span>Sebelumnya</span>
+            </button>
+            <button type="button" class="wf-nav-btn" id="wf-next-btn-2" aria-label="Tahap Selanjutnya">
+              <span>Selanjutnya</span>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="9 18 15 12 9 6"></polyline>
+              </svg>
+            </button>
+          </div>
         </div>
       </div>
     </div>

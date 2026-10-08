@@ -22,6 +22,7 @@ test('Project Structure: Essential Files Exist', () => {
     'assets/js/navigation.js',
     'assets/js/faq.js',
     'assets/js/select.js',
+    'assets/js/workflow.js',
     'assets/js/brochure.js',
     'assets/images/hero-software-architecture.jpg',
     'assets/images/service-digitalisasi-umkm.jpg',
@@ -198,6 +199,7 @@ test('Quality Gate: Zero Emojis and Zero Em Dashes', () => {
     'assets/js/navigation.js',
     'assets/js/faq.js',
     'assets/js/select.js',
+    'assets/js/workflow.js',
     'assets/js/brochure.js',
     'docs/preview/allpages.md'
   ];
@@ -273,4 +275,47 @@ test('Quality Gate: Problem-Solution Orientation and Grounded Tone', () => {
   assert.ok(brochureHtml.includes('Aplikasi Mobile Android'), 'Brochure must feature Mobile Android');
   assert.ok(brochureHtml.includes('Integrasi Sistem &amp; Otomasi Alur Kerja'), 'Brochure must feature Integrasi Sistem');
 });
+
+test('Interactive Collaboration Workflow Pipeline Verification', () => {
+  const indexHtml = fs.readFileSync(path.join(rootDir, 'index.html'), 'utf8');
+  const workflowJs = fs.readFileSync(path.join(rootDir, 'assets/js/workflow.js'), 'utf8');
+  const sectionsCss = fs.readFileSync(path.join(rootDir, 'assets/css/sections.css'), 'utf8');
+  const appJs = fs.readFileSync(path.join(rootDir, 'assets/js/app.js'), 'utf8');
+
+  // Verify container and elements in index.html
+  assert.ok(indexHtml.includes('id="workflow-interactive"'), 'index.html must have #workflow-interactive container');
+  assert.ok(indexHtml.includes('role="tablist"'), 'index.html must define tablist for stepper track');
+  assert.ok(indexHtml.includes('id="wf-autoplay-toggle"'), 'index.html must have autoplay toggle button');
+  assert.ok(indexHtml.includes('id="wf-progress-bar"'), 'index.html must have animated progress bar');
+  assert.ok(indexHtml.includes('id="wf-visual-slot"'), 'index.html must have dynamic visual slot');
+  assert.ok(indexHtml.includes('id="wf-stage-deliverables"'), 'index.html must have stage deliverables list');
+  assert.ok(indexHtml.includes('id="wf-stage-client-role"'), 'index.html must have client role callout box');
+
+  // Verify 5 stages in workflow.js
+  assert.ok(workflowJs.includes('WORKFLOW_STAGES'), 'workflow.js must export WORKFLOW_STAGES');
+  assert.ok(workflowJs.includes('initWorkflow'), 'workflow.js must export initWorkflow');
+  assert.ok(workflowJs.includes('Konsultasi & Pemetaan Kebutuhan'), 'workflow.js must contain Stage 1');
+  assert.ok(workflowJs.includes('Perancangan Arsitektur & Roadmap Sprint'), 'workflow.js must contain Stage 2');
+  assert.ok(workflowJs.includes('Pengerjaan Modular & Live Demo Staging'), 'workflow.js must contain Stage 3');
+  assert.ok(workflowJs.includes('Pengujian Menyeluruh & Uji Bersama'), 'workflow.js must contain Stage 4');
+  assert.ok(workflowJs.includes('Peluncuran Resmi & 100% Serah Terima'), 'workflow.js must contain Stage 5');
+
+  // Verify SVG generation for all 5 stages
+  assert.ok(workflowJs.includes("case 'consultation':"), 'workflow.js must have consultation SVG');
+  assert.ok(workflowJs.includes("case 'architecture':"), 'workflow.js must have architecture SVG');
+  assert.ok(workflowJs.includes("case 'development':"), 'workflow.js must have development SVG');
+  assert.ok(workflowJs.includes("case 'testing':"), 'workflow.js must have testing SVG');
+  assert.ok(workflowJs.includes("case 'launch':"), 'workflow.js must have launch SVG');
+
+  // Verify CSS styles & animations
+  assert.ok(sectionsCss.includes('.workflow-interactive-container'), 'sections.css must have .workflow-interactive-container');
+  assert.ok(sectionsCss.includes('.wf-stepper-track'), 'sections.css must have .wf-stepper-track');
+  assert.ok(sectionsCss.includes('.wf-stage-showcase'), 'sections.css must have .wf-stage-showcase');
+  assert.ok(sectionsCss.includes('@keyframes wfPulseDotAnim'), 'sections.css must define pulse animation');
+  assert.ok(sectionsCss.includes('@media (prefers-reduced-motion: reduce)'), 'sections.css must support reduced motion');
+
+  // Verify app.js integration
+  assert.ok(appJs.includes('initWorkflow()'), 'app.js must call initWorkflow');
+});
+
 
