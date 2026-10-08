@@ -23,11 +23,33 @@ Live Domain: [https://service.gtkrshnaaa.my.id](https://service.gtkrshnaaa.my.id
   - Custom Enterprise Software Architecture (`assets/images/service-custom-software.svg`)
 - **Interactive Capabilities:**
   - Standalone Capabilities Brochure (`brochure.html`) with one-click print-to-PDF export
-  - Dynamic Project Cost & Timeline Estimator with real-time tier calculation
+  - Dynamic Project Cost & Timeline Estimator with dual-tier support (Skala UMKM & Skala Bisnis)
   - One-click WhatsApp consultation dispatch (`0851-5077-1763` / `+62 851 5077 1763`) with encoded project brief
   - Accessible technical consultation booking modal
   - Mobile drawer navigation with smooth responsive transitions
   - Accordion FAQ system
+- **Copy Standard:** Clean Indo-English technical tone tailored for Indonesian market founders and business owners while preserving international tech nomenclature.
+
+---
+
+## Service Tiers & Engagement Models
+
+The service catalog is strictly divided into two distinct engagement tracks:
+
+### 1. Skala UMKM (Micro, Small & Medium Businesses)
+- **Scope Limit:** Strictly web-only (landing page, digital catalog/profile, up to fullstack Laravel web apps). No mobile apps.
+- **Budget Bounds:** Strictly bounded between **Rp 1.200.000 (IDR 1.2M)** minimum and **Rp 5.000.000 (IDR 5.0M)** maximum.
+- **Delivery Timeline:** 3 to 10 business days.
+- **Base Packages:**
+  - Landing Page UMKM: Rp 1.200.000 (1 responsive page, SEO basics, direct WhatsApp CTA)
+  - Web Katalog & Profil: Rp 2.500.000 (Multi-page catalog, admin CRUD, inquiry form)
+  - Fullstack Laravel UMKM: Rp 3.800.000 - Rp 5.000.000 (Dynamic relational database, auth, admin panel)
+
+### 2. Skala Bisnis (Enterprise & Growth Platform)
+- **Scope Limit:** Multi-platform web systems, cross-platform mobile apps (Flutter & React Native), scalable backend APIs, and custom enterprise infrastructure.
+- **Budget Range:** Starting from Rp 8.500.000 up to custom enterprise scale.
+- **Delivery Timeline:** 2 to 8 weeks depending on architectural complexity.
+- **Capabilities:** High-concurrency Laravel 11 backends, Redis caching, queue workers, offline-first SQLite synchronization, CI/CD pipelines, and SLA maintenance retainers.
 
 ---
 

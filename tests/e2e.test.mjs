@@ -72,7 +72,35 @@ test('HTML Verification: Identity and Requirements', () => {
   assert.ok(!html.includes('my-photo'), 'Should not have personal photo');
 });
 
-test('Brochure Detail Page: Capabilities & PDF Export Verification', () => {
+test('Dual-Tier Architecture: Skala UMKM vs Skala Bisnis Requirements', () => {
+  const html = fs.readFileSync(path.join(rootDir, 'index.html'), 'utf8');
+
+  // Verify Skala Tiers exist on landing page
+  assert.ok(html.includes('Skala UMKM'), 'Must present Skala UMKM tier');
+  assert.ok(html.includes('Skala Bisnis'), 'Must present Skala Bisnis tier');
+
+  // Verify Skala UMKM pricing bounds (Min 1.2 Juta, Max 5 Juta)
+  assert.ok(html.includes('1.200.000') || html.includes('1.2 Juta'), 'Must feature UMKM minimum 1.2M');
+  assert.ok(html.includes('5.000.000') || html.includes('5 Juta'), 'Must feature UMKM maximum 5M');
+
+  // Verify UMKM is web-only (landing, catalog, fullstack laravel)
+  assert.ok(html.includes('Web-Only') || html.includes('web-only'), 'Must state UMKM is web-only');
+  assert.ok(html.includes('umkm-landing'), 'Estimator must feature UMKM Landing option');
+  assert.ok(html.includes('umkm-catalog'), 'Estimator must feature UMKM Catalog option');
+  assert.ok(html.includes('umkm-laravel'), 'Estimator must feature UMKM Laravel option');
+
+  // Verify scale toggle tabs in estimator
+  assert.ok(html.includes('data-scale="umkm"'), 'Estimator must have UMKM tab trigger');
+  assert.ok(html.includes('data-scale="bisnis"'), 'Estimator must have Bisnis tab trigger');
+
+  // Verify refined Indo-English copy
+  assert.ok(html.includes('Estimasi Investasi'), 'Estimator summary must use Indo-English copy');
+  assert.ok(html.includes('Pesan Paket via WhatsApp'), 'Estimator CTA must use Indo-English copy');
+  assert.ok(html.includes('Pertanyaan Umum'), 'FAQ section must use Indo-English eyebrow');
+  assert.ok(html.includes('Apa perbedaan Skala UMKM dan Skala Bisnis?'), 'FAQ must explain tier differences');
+});
+
+test('Brochure Detail Page: Capabilities & Dual-Tier Verification', () => {
   const brochureHtml = fs.readFileSync(path.join(rootDir, 'brochure.html'), 'utf8');
 
   // Verify Identity & Scope
@@ -86,16 +114,36 @@ test('Brochure Detail Page: Capabilities & PDF Export Verification', () => {
   assert.ok(brochureHtml.includes('assets/js/brochure.js'), 'Brochure must load brochure controller script');
   assert.ok(brochureHtml.includes('assets/css/brochure.css'), 'Brochure must load brochure stylesheet');
 
+  // Verify Dual Tiers in Brochure
+  assert.ok(brochureHtml.includes('Skala UMKM'), 'Brochure must document Skala UMKM');
+  assert.ok(brochureHtml.includes('Skala Bisnis'), 'Brochure must document Skala Bisnis');
+  assert.ok(brochureHtml.includes('1.200.000'), 'Brochure must list UMKM base 1.2M');
+  assert.ok(brochureHtml.includes('5.000.000'), 'Brochure must list UMKM max 5M');
+
   // Verify Core Stacks Covered
   assert.ok(brochureHtml.includes('React 19'), 'Brochure must include React 19');
   assert.ok(brochureHtml.includes('Flutter'), 'Brochure must include Flutter');
   assert.ok(brochureHtml.includes('Laravel 11'), 'Brochure must include Laravel 11');
 });
 
+test('Estimator Pricing Logic: UMKM Clamping Bounds', () => {
+  const estimatorJs = fs.readFileSync(path.join(rootDir, 'assets/js/estimator.js'), 'utf8');
+  const appJs = fs.readFileSync(path.join(rootDir, 'assets/js/app.js'), 'utf8');
+
+  // Verify UMKM clamp logic in both modular and standalone bundle
+  [estimatorJs, appJs].forEach((content, idx) => {
+    const label = idx === 0 ? 'estimator.js' : 'app.js';
+    assert.ok(content.includes('5000000'), `${label} must clamp upper bound to 5000000`);
+    assert.ok(content.includes('1200000'), `${label} must clamp lower bound to 1200000`);
+    assert.ok(content.includes('Math.min(5000000, Math.max(1200000'), `${label} must enforce 1.2M - 5M clamp formula`);
+  });
+});
+
 test('Quality Gate: Zero Emojis and Zero Em Dashes', () => {
   const textFiles = [
     'index.html',
     'brochure.html',
+    'README.md',
     'assets/css/tokens.css',
     'assets/css/components.css',
     'assets/css/layout.css',
