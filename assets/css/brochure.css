@@ -292,6 +292,10 @@
   gap: 14px;
 }
 
+.tiers-deck-grid.tiers-4 {
+  grid-template-columns: repeat(4, 1fr);
+}
+
 .tier-deck-card {
   border: 1px solid var(--border-hairline);
   border-radius: var(--radius-md);
@@ -432,7 +436,8 @@
   .services-deck-grid,
   .matrix-grid,
   .process-deck-grid,
-  .tiers-deck-grid {
+  .tiers-deck-grid,
+  .tiers-deck-grid.tiers-4 {
     grid-template-columns: 1fr;
   }
   .brochure-footer {

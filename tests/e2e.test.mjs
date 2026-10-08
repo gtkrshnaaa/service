@@ -79,13 +79,15 @@ test('Dual-Tier Architecture: Skala UMKM vs Skala Bisnis Requirements', () => {
   assert.ok(html.includes('Skala UMKM'), 'Must present Skala UMKM tier');
   assert.ok(html.includes('Skala Bisnis'), 'Must present Skala Bisnis tier');
 
-  // Verify Skala UMKM pricing bounds (Min 1.2 Juta, Max 5 Juta)
-  assert.ok(html.includes('1.200.000') || html.includes('1.2 Juta'), 'Must feature UMKM minimum 1.2M');
+  // Verify Skala UMKM pricing bounds (Min 600 Ribu, Max 5 Juta)
+  assert.ok(html.includes('600.000') || html.includes('600 Ribu'), 'Must feature UMKM minimum 600k');
+  assert.ok(html.includes('1.200.000') || html.includes('1.2 Juta'), 'Must feature UMKM multi-page 1.2M');
   assert.ok(html.includes('5.000.000') || html.includes('5 Juta'), 'Must feature UMKM maximum 5M');
 
-  // Verify UMKM is web-only (landing, catalog, fullstack laravel)
+  // Verify UMKM is web-only (landing, multipage, catalog, fullstack laravel)
   assert.ok(html.includes('Web-Only') || html.includes('web-only'), 'Must state UMKM is web-only');
   assert.ok(html.includes('umkm-landing'), 'Estimator must feature UMKM Landing option');
+  assert.ok(html.includes('umkm-multipage'), 'Estimator must feature UMKM Multipage option');
   assert.ok(html.includes('umkm-catalog'), 'Estimator must feature UMKM Catalog option');
   assert.ok(html.includes('umkm-laravel'), 'Estimator must feature UMKM Laravel option');
 
@@ -117,7 +119,8 @@ test('Brochure Detail Page: Capabilities & Dual-Tier Verification', () => {
   // Verify Dual Tiers in Brochure
   assert.ok(brochureHtml.includes('Skala UMKM'), 'Brochure must document Skala UMKM');
   assert.ok(brochureHtml.includes('Skala Bisnis'), 'Brochure must document Skala Bisnis');
-  assert.ok(brochureHtml.includes('1.200.000'), 'Brochure must list UMKM base 1.2M');
+  assert.ok(brochureHtml.includes('600.000') || brochureHtml.includes('600 Ribu'), 'Brochure must list UMKM base 600k');
+  assert.ok(brochureHtml.includes('1.200.000'), 'Brochure must list UMKM multipage 1.2M');
   assert.ok(brochureHtml.includes('5.000.000'), 'Brochure must list UMKM max 5M');
 
   // Verify Core Stacks Covered
@@ -134,8 +137,9 @@ test('Estimator Pricing Logic: UMKM Clamping Bounds', () => {
   [estimatorJs, appJs].forEach((content, idx) => {
     const label = idx === 0 ? 'estimator.js' : 'app.js';
     assert.ok(content.includes('5000000'), `${label} must clamp upper bound to 5000000`);
-    assert.ok(content.includes('1200000'), `${label} must clamp lower bound to 1200000`);
-    assert.ok(content.includes('Math.min(5000000, Math.max(1200000'), `${label} must enforce 1.2M - 5M clamp formula`);
+    assert.ok(content.includes('600000'), `${label} must clamp lower bound to 600000`);
+    assert.ok(content.includes('Math.min(5000000, Math.max(600000'), `${label} must enforce 600k - 5M clamp formula`);
+    assert.ok(content.includes('umkm-multipage'), `${label} must include umkm-multipage option`);
   });
 });
 
@@ -201,4 +205,10 @@ test('Quality Gate: Zero Emojis and Zero Em Dashes', () => {
       `File ${relPath} must not contain emojis`
     );
   }
+});
+
+test('Layout Architecture: 90 Percent Viewport Container', () => {
+  const layoutCss = fs.readFileSync(path.join(rootDir, 'assets/css/layout.css'), 'utf8');
+  assert.ok(layoutCss.includes('width: 90%'), 'layout.css must set container width to 90%');
+  assert.ok(layoutCss.includes('max-width: 90vw'), 'layout.css must set max-width to 90vw');
 });

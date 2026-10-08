@@ -37,12 +37,13 @@ Live Domain: [https://service.gtkrshnaaa.my.id](https://service.gtkrshnaaa.my.id
 The service catalog is strictly divided into two distinct engagement tracks:
 
 ### 1. Skala UMKM (Micro, Small & Medium Businesses)
-- **Scope Limit:** Strictly web-only (landing page, digital catalog/profile, up to fullstack Laravel web apps). No mobile apps.
-- **Budget Bounds:** Strictly bounded between **Rp 1.200.000 (1.2 Juta)** minimum and **Rp 5.000.000 (5.0 Juta)** maximum.
-- **Delivery Timeline:** 3 to 10 business days.
+- **Scope Limit:** Strictly web-only (landing page 1 halaman, digital profile/catalog multi-halaman, up to fullstack Laravel web apps). No mobile apps.
+- **Budget Bounds:** Strictly bounded between **Rp 600.000 (600 Ribu)** minimum and **Rp 5.000.000 (5.0 Juta)** maximum.
+- **Delivery Timeline:** 1 to 10 business days.
 - **Base Packages:**
-  - Landing Page UMKM: Rp 1.200.000 (1 responsive page, SEO basics, direct WhatsApp CTA)
-  - Web Katalog & Profil: Rp 2.500.000 (Multi-page catalog, admin CRUD, inquiry form)
+  - Landing Page (1 Halaman): Rp 600.000 (1 responsive page, SEO basics, direct WhatsApp CTA)
+  - Web Profil Multi-Halaman: Rp 1.200.000 (Multi-page company profile tailored to business volume, structured navigation)
+  - Web Katalog Bisnis: Rp 2.500.000 (Multi-page catalog, admin CRUD, inquiry form / WhatsApp)
   - Fullstack Laravel UMKM: Rp 3.800.000 - Rp 5.000.000 (Dynamic relational database, auth, admin panel)
 
 ### 2. Skala Bisnis (Enterprise & Growth Platform)
