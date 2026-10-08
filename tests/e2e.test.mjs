@@ -207,8 +207,8 @@ test('Quality Gate: Zero Emojis and Zero Em Dashes', () => {
   }
 });
 
-test('Layout Architecture: 90 Percent Viewport Container', () => {
+test('Layout Architecture: 82 Percent Viewport Container', () => {
   const layoutCss = fs.readFileSync(path.join(rootDir, 'assets/css/layout.css'), 'utf8');
-  assert.ok(layoutCss.includes('width: 90%'), 'layout.css must set container width to 90%');
-  assert.ok(layoutCss.includes('max-width: 90vw'), 'layout.css must set max-width to 90vw');
+  assert.ok(layoutCss.includes('width: 82%'), 'layout.css must set container width to 82%');
+  assert.ok(layoutCss.includes('max-width: 82vw'), 'layout.css must set max-width to 82vw');
 });
