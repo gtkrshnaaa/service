@@ -66,6 +66,11 @@ test('HTML Verification: Identity and Requirements', () => {
   assert.ok(html.includes('mobile-menu-toggle'), 'Must have mobile navigation trigger');
   assert.ok(html.includes('mobile-drawer'), 'Must have mobile navigation drawer');
 
+  // Verify Mobile Scope: Android Only
+  assert.ok(html.includes('Aplikasi Mobile Android'), 'Must feature Android mobile apps');
+  assert.strictEqual(/\biOS\b/.test(html), false, 'index.html must not mention iOS');
+  assert.strictEqual(/\bApp Store\b/.test(html), false, 'index.html must not mention App Store');
+
   // Verify Dedicated Brochure Showcase Section
   assert.ok(html.includes('id="brochure"'), 'Must have dedicated brochure section');
   assert.ok(html.includes('href="brochure.html"'), 'Must link to brochure detail page');
@@ -130,6 +135,11 @@ test('Brochure Detail Page: Capabilities & Dual-Tier Verification', () => {
   assert.ok(brochureHtml.includes('React 19'), 'Brochure must include React 19');
   assert.ok(brochureHtml.includes('Flutter'), 'Brochure must include Flutter');
   assert.ok(brochureHtml.includes('Laravel 11'), 'Brochure must include Laravel 11');
+
+  // Verify Android Mobile Scope
+  assert.ok(brochureHtml.includes('Aplikasi Mobile Android'), 'Brochure must feature Android mobile apps');
+  assert.strictEqual(/\biOS\b/.test(brochureHtml), false, 'brochure.html must not mention iOS');
+  assert.strictEqual(/\bApp Store\b/.test(brochureHtml), false, 'brochure.html must not mention App Store');
 });
 
 test('Estimator Pricing Logic: UMKM Clamping Bounds', () => {
@@ -238,3 +248,28 @@ test('Responsive Architecture: Breakpoints & Mobile Overflow Safeguards', () => 
   assert.ok(brochureCss.includes('.guarantees-grid'), 'brochure.css must define guarantees-grid');
   assert.ok(brochureCss.includes('.brochure-toolbar-inner'), 'brochure.css must define toolbar mobile layout');
 });
+
+test('Quality Gate: Problem-Solution Orientation and Grounded Tone', () => {
+  const indexHtml = fs.readFileSync(path.join(rootDir, 'index.html'), 'utf8');
+  const brochureHtml = fs.readFileSync(path.join(rootDir, 'brochure.html'), 'utf8');
+  const readmeMd = fs.readFileSync(path.join(rootDir, 'README.md'), 'utf8');
+
+  // Strict check: forbid the word "menengah" everywhere
+  const menengahRegex = /menengah/i;
+  assert.strictEqual(menengahRegex.test(indexHtml), false, 'index.html must not contain "menengah"');
+  assert.strictEqual(menengahRegex.test(brochureHtml), false, 'brochure.html must not contain "menengah"');
+  assert.strictEqual(menengahRegex.test(readmeMd), false, 'README.md must not contain "menengah"');
+
+  // Verify four problem-solution service titles in index.html
+  assert.ok(indexHtml.includes('Digitalisasi &amp; Reputasi Usaha'), 'Must feature Digitalisasi & Reputasi Usaha');
+  assert.ok(indexHtml.includes('Aplikasi Web &amp; Portal Operasional'), 'Must feature Aplikasi Web & Portal Operasional');
+  assert.ok(indexHtml.includes('Aplikasi Mobile Android'), 'Must feature Aplikasi Mobile Android');
+  assert.ok(indexHtml.includes('Integrasi Sistem &amp; Otomasi Alur Kerja'), 'Must feature Integrasi Sistem & Otomasi Alur Kerja');
+
+  // Verify brochure capability titles
+  assert.ok(brochureHtml.includes('Digitalisasi &amp; Reputasi Usaha UMKM'), 'Brochure must feature Digitalisasi UMKM');
+  assert.ok(brochureHtml.includes('Aplikasi Web &amp; Portal Operasional'), 'Brochure must feature Aplikasi Web');
+  assert.ok(brochureHtml.includes('Aplikasi Mobile Android'), 'Brochure must feature Mobile Android');
+  assert.ok(brochureHtml.includes('Integrasi Sistem &amp; Otomasi Alur Kerja'), 'Brochure must feature Integrasi Sistem');
+});
+
