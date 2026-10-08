@@ -85,3 +85,45 @@ button, input, select, textarea {
   font-family: inherit;
   font-size: inherit;
 }
+
+/* Custom Themed Text Selection */
+::selection {
+  background-color: var(--accent-sage);
+  color: #ffffff;
+}
+
+::-moz-selection {
+  background-color: var(--accent-sage);
+  color: #ffffff;
+}
+
+/* Mobile Touch Tap Highlight */
+html, body, button, a, input, select, textarea, [role="button"], [tabindex] {
+  -webkit-tap-highlight-color: rgba(90, 131, 87, 0.18);
+}
+
+/* Custom Themed Scrollbar */
+html {
+  scrollbar-width: thin;
+  scrollbar-color: #cad2c5 #f4f3ef;
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f4f3ef;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #cad2c5;
+  border-radius: var(--radius-xs);
+  border: 1px solid #f4f3ef;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #84a98c;
+}
+
